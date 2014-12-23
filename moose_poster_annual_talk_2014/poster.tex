@@ -1,0 +1,15 @@
+\documentclass[a0paper]{article}
+\usepackage[landscape,top=1cm,bottom=1cm]{geometry}
+\usepackage{graphicx}
+
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[remember picture,overlay] 
+    \node[opacity=0.8] (background) at (current page.center) {
+    \includegraphics[width=\paperwidth,height=\paperheight]{./background.jpg}
+};
+\end{tikzpicture}
+
+\end{document}

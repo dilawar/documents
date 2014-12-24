@@ -8,6 +8,9 @@
 \usepackage{multicol}
 \usepackage{moresize}
 
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
 
 \tikzset{
   every overlay node/.style={
@@ -53,9 +56,13 @@
     \section*{\HUGE \textcolor{red}{Introduction}}
 \HUGE
 
+\begin{Figure}
+\begin{itemize}
+    \item Modeling across scale, bottom-up. A single neuron, 
+\end{itemize}
 
-
-
+    \includegraphics[width=0.5\textwidth]{./images/computation_inside_neurons.jpg}
+\end{Figure}
 
 \end{multicols}
 

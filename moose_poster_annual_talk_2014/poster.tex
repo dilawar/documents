@@ -4,13 +4,24 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
 \usepackage{color}
-\usepackage{multicol}
 \usepackage{moresize}
+\usepackage{lipsum} % dummy text
+\usepackage{multicol}
 
 \newenvironment{Figure}
   {\par\medskip\noindent\minipage{\linewidth}}
   {\endminipage\par\medskip}
+
+% This macro creates header.
+\newcommand{\HEADING}[1]
+{
+    \includegraphics[scale=0.25]{./images/heading.png} \vspace{-1cm}
+    {\fontsize{2cm}{2em}\selectfont \textcolor{red}{#1}}
+    \vspace{2cm}
+}
+
 
 \tikzset{
   every overlay node/.style={
@@ -33,11 +44,6 @@
 };
 \end{tikzpicture}
 
-%%% here goes the title and all
-%\tikzoverlay[draw=white,text width=\textwidth] at (10cm,-4cm) {
-%    \fontsize{4cm}{1em}\selectfont Modelling Memory Across Scale
-%};
-%
 
 \begin{minipage}{\textwidth}
     \centering
@@ -48,20 +54,135 @@
 \end{minipage}
 
 
+
 %% Three columns
 \vspace{5cm}
 \setlength{\columnsep}{6cm}
 \begin{multicols}{3}
-%% Introduction here.
-    \section*{\HUGE \textcolor{red}{Introduction}}
-\HUGE
+    
+%%%%%%%%%%%% Column 1
+\begin{Figure}
+
+    \HEADING{Introduction}
+
+    \begin{Figure}
+     {\HUGE Memory and plasticity involve brain mechanisms from molecular scale
+         to enormous networks. \\};
+
+     \begin{tikzpicture}[
+        block/.style={
+             rectangle
+            , align=center
+            , fill=blue!5
+            , rounded corners
+            , text width=4cm
+            , node distance=3cm
+            , font=\fontsize{1cm}{1em}\selectfont
+            , minimum height=4em
+        }
+        ]
+        \node[block] (network) {Network};
+        \node[block,below of=network] (neuron)  {Neuron};
+        \node[block,below of=neuron] (synaptic) {Synaptic};
+        \node[block,below of=synaptic] (molecular) {Molecular};
+
+        \draw[block,open triangle 90-open triangle 90] (molecular) -- (synaptic);
+        \draw[block,open triangle 90-open triangle 90] (neuron) -- (synaptic);
+        \draw[block,open triangle 90-open triangle 90] (network) -- (neuron);
+
+        \draw[open triangle 90-open triangle 90] (network) -- ++(4,0) --
+        ++(0,-5) |- (synaptic);
+        ;
+
+    \end{tikzpicture} 
+     \begin{tikzpicture}
+         \centering
+         \node [] (image) at (0,-1) {
+             \includegraphics[scale=0.3,angle=-30]{./images/single_cell.png}
+         };
+
+         \foreach \i in {-3,...,3}
+         \foreach \j in {-3,...,3}
+         {
+             \node[fill=yellow!30,thin,circle] (n\i\j) at (\i, \j) {};
+         }
+         \node[below=4cm] {\LARGE A neuron embed in network};
+     \end{tikzpicture} 
+    \begin{tikzpicture}
+        \node[] (image) {
+            \includegraphics[width=0.5\textwidth]{./images/Gallery_Moose_Multiscale.png}
+        };
+    \end{tikzpicture} %
+    \end{Figure}
+
+    \HEADING{Multiscale Modeling in MOOSE}
+
+    \begin{Figure}
+
+        {\HUGE We have developed \textcolor{red}{MOOSE}, the Multiscale Object
+            Oriented Simulation Environment, to model plasticity across scales.}
+
+        {\HUGE \textbf{Some projects using MOOSE}}
+        
+        \begin{tikzpicture}
+
+            \node[below=6cm, text width=0.5\textwidth] {\Huge
+                Chemical switches embedded in detailed neuronal models embedded in a
+                network.
+            };
+
+        \end{tikzpicture} %
+        \begin{tikzpicture}
+
+            \node[] (image) {
+                \includegraphics[width=0.5\textwidth]{./images/fullmodel_moogli.png}
+            };
+
+            \node[below=6cm,text width=0.5\textwidth]{ \Huge
+                Network coding and computation in olfaction and sematosensory
+                cortex.
+            };
+
+        \end{tikzpicture}%
+
+        \begin{tikzpicture}
+            \node[text width=0.3\textwidth] {\Huge
+                Robustness of chemical switches with respect to stochasticity and
+                parameters.
+            };
+
+        \end{tikzpicture}
+
+    \end{Figure}
+
+\end{Figure}
+
+%% Column 2
 
 \begin{Figure}
-\begin{itemize}
-    \item Modeling across scale, bottom-up. A single neuron, 
-\end{itemize}
+    \HUGE
+    Content of column 2.
+\end{Figure}
 
-    \includegraphics[width=0.5\textwidth]{./images/computation_inside_neurons.jpg}
+%% Column 3
+\begin{Figure}
+    
+    \HEADING{Summary}
+
+    \HUGE We use models to
+    \begin{itemize}
+            
+        \item Integrate many scales of neuronal data with basic
+            physical/chemical principles.
+        \item Explain phenomenon of plasticity, activity and neuronal coding.
+        \item Predict circuit mechanisms, plasticity rules, and emergent
+            phenomena such as \emph{decorrelation}, \emph{robustness}, and
+            \emph{memory decay}.
+
+    \end{itemize}
+
+    \textbf{We have developed MOOSE to carry out these simulations}.
+
 \end{Figure}
 
 \end{multicols}

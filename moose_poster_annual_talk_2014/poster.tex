@@ -18,7 +18,7 @@
 \newcommand{\HEADING}[1]
 {
     \includegraphics[scale=0.25]{./images/heading.png} \vspace{-1cm}
-    {\fontsize{2cm}{2em}\selectfont \textcolor{red}{#1}}
+    {\fontsize{1.5cm}{2em}\selectfont \textcolor{red}{#1}}
     \vspace{2cm}
 }
 
@@ -31,6 +31,11 @@
 \newcommand{\CAPTION}[1]
 {
     \Large \texttt{#1}
+}
+
+\newcommand{\TEXT}[1]
+{
+    \Huge {#1}
 }
 
 \tikzset{
@@ -76,8 +81,9 @@
     \HEADING{Introduction}
 
     \begin{Figure}
-     {\HUGE Memory and plasticity involve brain mechanisms from molecular scale
-         to enormous networks. \\};
+
+    \TEXT{Memory and plasticity involve brain mechanisms from molecular scale
+         to enormous networks.};
 
      \begin{tikzpicture}[
         block/.style={
@@ -114,46 +120,64 @@
          \foreach \i in {-3,...,3}
          \foreach \j in {-3,...,3}
          {
-             \node[fill=yellow!30,thin,circle] (n\i\j) at (\i, \j) {};
+             \node[fill=yellow!30,thin,inner sep=0pt, minimum size=3mm,circle] (n\i\j) at (\i, \j) {};
          }
          \node[below=4cm] {\CAPTION{A neuron embed in network}};
      \end{tikzpicture} 
-    \begin{tikzpicture}
+     \begin{tikzpicture}
         \node[] (image) {
             \includegraphics[width=0.5\textwidth]{./images/Gallery_Moose_Multiscale.png}
         };
     \end{tikzpicture} %
+
+    \vspace{1cm}
+    \TEXT{We have developed \textcolor{red}{MOOSE}, the Multiscale Object
+        Oriented Simulation Environment, to model plasticity across scales.}
+
     \end{Figure}
+
 
     \HEADING{Multiscale Modeling in MOOSE}
 
     \begin{Figure}
 
-        {\HUGE We have developed \textcolor{red}{MOOSE}, the Multiscale Object
-            Oriented Simulation Environment, to model plasticity across scales.}
-
-        \SECTION{Modular solvers for multi-scaling}
+        \SECTION{The MOOSE architecture}
 
         \begin{tikzpicture}
             \node[] (image) {
-                \includegraphics[width=0.2\textwidth]{./images/stochastic_solver.png}
+                \includegraphics[width=\textwidth]{./images/architecture.png}
+            };
+        \end{tikzpicture}
+
+        \SECTION{Modular solvers available in MOOSE}
+
+        \begin{tikzpicture}
+            \node[] (image) {
+                \includegraphics[width=0.15\textwidth]{./images/stochastic_solver.png}
             }; 
-            \node[below=6cm] {\CAPTION{Stochastic(GSSA): GSolve}};
+            \node[below=3.5cm] {\CAPTION{Stochastic(GSSA): GSolve}};
         \end{tikzpicture} \hfill
         \begin{tikzpicture}
             \node[] (image) {
-                \includegraphics[width=0.2\textwidth]{./images/ksolve_dsolve.png}
+                \includegraphics[width=0.15\textwidth]{./images/ksolve_dsolve.png}
             };
-            \node[below=6cm] {\CAPTION{ODE + Diffusion: KSolve + DSolve}};
+            \node[below=3.5cm] {\CAPTION{ODE + Diffusion: KSolve + DSolve}};
         \end{tikzpicture} \hfill
         \begin{tikzpicture}
             \node[] (image) {
-                \includegraphics[width=0.2\textwidth]{./images/hsolve.png}
+                \includegraphics[width=0.15\textwidth]{./images/hsolve.png}
             };
-            \node[below=6cm] {\CAPTION{Electrical: HSolve}};
+            \node[below=3.5cm] {\CAPTION{Electrical: HSolve}};
         \end{tikzpicture}
 
     \end{Figure}
+
+
+\end{Figure}
+
+%% Column 2
+
+\begin{Figure}
 
     \SECTION{Simulation: all-together}
 
@@ -178,13 +202,6 @@
             };
         \end{tikzpicture}
     \end{Figure}
-
-
-\end{Figure}
-
-%% Column 2
-
-\begin{Figure}
 
         \SECTION{Some projects using MOOSE}
         

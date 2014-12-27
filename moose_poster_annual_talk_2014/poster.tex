@@ -1,6 +1,7 @@
 \documentclass[a0paper,12pt]{article}
 \usepackage[landscape,top=5cm,bottom=3cm,right=5cm,left=5cm]{geometry}
 \usepackage{graphicx}
+\usepackage{amsmath}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{tikz}
@@ -19,7 +20,7 @@
 {
     \includegraphics[scale=0.25]{./images/heading.png} \vspace{-1cm}
     {\fontsize{1.5cm}{2em}\selectfont \textcolor{red}{#1}}
-    \vspace{2cm}
+    \vspace{1cm}
 }
 
 \newcommand{\SECTION}[1]
@@ -122,7 +123,7 @@
          {
              \node[fill=yellow!30,thin,inner sep=0pt, minimum size=3mm,circle] (n\i\j) at (\i, \j) {};
          }
-         \node[below=4cm] {\CAPTION{A neuron embed in network}};
+         \node[below=4cm,text width=0.2\textwidth] {\CAPTION{Embed in network}};
      \end{tikzpicture} 
      \begin{tikzpicture}
         \node[] (image) {
@@ -140,34 +141,37 @@
     \HEADING{Multiscale Modeling in MOOSE}
 
     \begin{Figure}
+        \centering
 
         \SECTION{The MOOSE architecture}
 
         \begin{tikzpicture}
             \node[] (image) {
-                \includegraphics[width=\textwidth]{./images/architecture.png}
+                \includegraphics[width=0.9\textwidth]{./images/architecture.png}
             };
         \end{tikzpicture}
 
         \SECTION{Modular solvers available in MOOSE}
 
+        \footnote{Write the time-scales}
+
         \begin{tikzpicture}
             \node[] (image) {
                 \includegraphics[width=0.15\textwidth]{./images/stochastic_solver.png}
             }; 
-            \node[below=3.5cm] {\CAPTION{Stochastic(GSSA): GSolve}};
+            \node[below=3.5cm, text width=0.3\textwidth] {\CAPTION{Stochastic(GSSA): GSolve}};
         \end{tikzpicture} \hfill
         \begin{tikzpicture}
             \node[] (image) {
                 \includegraphics[width=0.15\textwidth]{./images/ksolve_dsolve.png}
             };
-            \node[below=3.5cm] {\CAPTION{ODE + Diffusion: KSolve + DSolve}};
+            \node[below=3.5cm, text width=0.3\textwidth] {\CAPTION{ODE + Diffusion: KSolve + DSolve}};
         \end{tikzpicture} \hfill
         \begin{tikzpicture}
             \node[] (image) {
                 \includegraphics[width=0.15\textwidth]{./images/hsolve.png}
             };
-            \node[below=3.5cm] {\CAPTION{Electrical: HSolve}};
+            \node[below=3.5cm, text width=0.3\textwidth] {\CAPTION{Electrical: HSolve}};
         \end{tikzpicture}
 
     \end{Figure}
@@ -177,66 +181,71 @@
 
 %% Column 2
 
+
+
 \begin{Figure}
+    \SECTION{Simulation: Putting them all-together}
 
-    \SECTION{Simulation: all-together}
+    \begin{tikzpicture}
+        \node[ rounded corners, fill=blue!10] (text) {
+        \begin{minipage}{0.45\textwidth}
+            \Huge
+            \begin{itemize}
+                \item $10^{11}$ cells
+                \item $10^{15}$ synapses 
+                \item $10000$? reactions per synapse  
+                \item Electrical events: $< 1$ ms  
+                \item Chemical events: $1\; \text{sec} \rightarrow 1000\; \text{sec}$ 
+                \item Structural events: $100\; \text{sec} \rightarrow \text{months}$
+                \item Lifetime of a protein: days 
+                \item Lifetime of a neuron: 100 years 
+                \item Lifetime of a memory: 100 years
+            \end{itemize}
 
-    \begin{Figure}
-        \begin{tikzpicture}
-            \node [] (image) at (0,7) {
-                \includegraphics[scale=0.4,angle=-30]{./images/single_cell.png}
-            };
-            \foreach \i in {-3,...,3}
-            \foreach \j in {-3,...,3}
-            {
-                \node[circle,fill=yellow!30,inner sep=0pt,minimum size=3mm] (n\i\j) at (\i, 8+\j) {};
-            }
-            \node[] (image) {
-                \includegraphics[width=0.4\textwidth]{./images/Gallery_Moose_Multiscale.png}
-            };
+        \end{minipage}
+        };
+    \end{tikzpicture} %
+    \begin{tikzpicture}
+        \node [] (simulation) {
+            \includegraphics[width=0.5\textwidth]{./images/simulation.png}
+        };
+    \end{tikzpicture}
+\end{Figure}
 
-        \end{tikzpicture} %
-        \begin{tikzpicture}
-            \node [] (simulation) {
-                \includegraphics[width=0.5\textwidth]{./images/simulation.png}
-            };
-        \end{tikzpicture}
-    \end{Figure}
+\HEADING{Some projects using MOOSE}
+\begin{Figure}
+    \begin{tikzpicture}
 
-        \SECTION{Some projects using MOOSE}
-        
-        \begin{tikzpicture}
-
-            \node[below=6cm, text width=0.5\textwidth] {\CAPTION{
+        \node[below=6cm, text width=0.5\textwidth] {\CAPTION{
                 Chemical switches embedded in detailed neuronal models embedded in a
                 network.}
-            };
+        };
 
-        \end{tikzpicture} %
-        \begin{tikzpicture}
+    \end{tikzpicture} %
+    \begin{tikzpicture}
 
-            \node[] (image) {
-                \includegraphics[width=0.5\textwidth]{./images/fullmodel_moogli.png}
-            };
+        \node[] (image) {
+            \includegraphics[width=0.5\textwidth]{./images/fullmodel_moogli.png}
+        };
 
-            \node[below=6cm,text width=0.5\textwidth]{ \CAPTION{
+        \node[below=6cm,text width=0.5\textwidth]{ \CAPTION{
                 Network coding and computation in olfaction and sematosensory
                 cortex.}
-            };
+        };
 
-        \end{tikzpicture}%
+    \end{tikzpicture}%
 
-        \begin{tikzpicture}
-            \node[] (image) {
-                \includegraphics[width=0.5\textwidth]{./images/poster_runView.png}
-            };
+    \begin{tikzpicture}
+        \node[] (image) {
+            \includegraphics[width=0.5\textwidth]{./images/poster_runView.png}
+        };
 
-            \node[below=6cm,text width=0.5\textwidth] {\CAPTION{
+        \node[below=6cm,text width=0.5\textwidth] {\CAPTION{
                 Robustness of chemical switches with respect to stochasticity and
                 parameters.}
-            };
+        };
 
-        \end{tikzpicture}
+    \end{tikzpicture}
 \end{Figure}
 
 %% Column 3

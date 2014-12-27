@@ -30,7 +30,7 @@
 
 \newcommand{\CAPTION}[1]
 {
-    \Large \texttt{#1}
+    \huge \texttt{#1}
 }
 
 \newcommand{\TEXT}[1]
@@ -207,9 +207,9 @@
         
         \begin{tikzpicture}
 
-            \node[below=6cm, text width=0.5\textwidth] {\Huge
+            \node[below=6cm, text width=0.5\textwidth] {\CAPTION{
                 Chemical switches embedded in detailed neuronal models embedded in a
-                network.
+                network.}
             };
 
         \end{tikzpicture} %
@@ -219,17 +219,21 @@
                 \includegraphics[width=0.5\textwidth]{./images/fullmodel_moogli.png}
             };
 
-            \node[below=6cm,text width=0.5\textwidth]{ \Huge
+            \node[below=6cm,text width=0.5\textwidth]{ \CAPTION{
                 Network coding and computation in olfaction and sematosensory
-                cortex.
+                cortex.}
             };
 
         \end{tikzpicture}%
 
         \begin{tikzpicture}
-            \node[text width=0.3\textwidth] {\Huge
+            \node[] (image) {
+                \includegraphics[width=0.5\textwidth]{./images/poster_runView.png}
+            };
+
+            \node[below=6cm,text width=0.5\textwidth] {\CAPTION{
                 Robustness of chemical switches with respect to stochasticity and
-                parameters.
+                parameters.}
             };
 
         \end{tikzpicture}

@@ -171,8 +171,20 @@
                  \includegraphics[scale=0.2]{./images/chemical_reactions.png}
              };
 
-             \draw[decoration={text along path, text={Chemical model}},
-                 decorate] (c1.center) to [bend right] (chemical);
+             %%  
+             \draw[o-o] (c1.center) to [bend right] (chemical) node [right]  {\LARGE
+                 Chemical model};
+            
+             %% Add transportation model.
+             \node[] (transport) at ([xshift=4cm,yshift=-1cm]s12.north) {
+                 \includegraphics[scale=0.8]{./images/transport_mechanism.png}
+             };
+
+             \draw[o-o] (s12.center) to [] (transport) ++(0,1cm) node [above] {\LARGE Trafficking
+                 models};
+
+             %\draw[decoration={text along path, text={Chemical model}},
+             %    decorate] (c1.center) to [bend right] (chemical);
 
 
          \end{scope}

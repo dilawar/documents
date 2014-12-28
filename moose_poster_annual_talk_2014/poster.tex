@@ -6,10 +6,20 @@
 \usepackage{lmodern}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{spy,calc}
+\usetikzlibrary{shapes.arrows}
+
 \usepackage{color}
 \usepackage{moresize}
 \usepackage{lipsum} % dummy text
 \usepackage{multicol}
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{layer1}
+\pgfdeclarelayer{layer2}
+\pgfdeclarelayer{layer3}
+\pgfdeclarelayer{foreground}
 
 \newenvironment{Figure}
   {\par\medskip\noindent\minipage{\linewidth}}
@@ -18,25 +28,29 @@
 % This macro creates header.
 \newcommand{\HEADING}[1]
 {
-    \includegraphics[scale=0.25]{./images/heading.png} \vspace{-1cm}
-    {\fontsize{1.5cm}{2em}\selectfont \textcolor{red}{#1}}
+    \includegraphics[scale=0.35]{./images/heading.png}
+    \fontsize{2.5cm}{1cm}\selectfont \textcolor{red}{#1}
     \vspace{1cm}
 }
 
 \newcommand{\SECTION}[1]
 {
-    \vspace{1cm}
-    \Huge \textsc{\textcolor{blue}{#1}}
+    {\fontsize{2cm}{1.5cm}\selectfont \textsc{\textcolor{blue}{#1}}}
 }
 
 \newcommand{\CAPTION}[1]
 {
-    \huge \texttt{#1}
+    \Huge \texttt{#1}
 }
 
 \newcommand{\TEXT}[1]
 {
-    \Huge {#1}
+   { \fontsize{1.5cm}{1.5cm}\fontfamily{\sfdefault}\selectfont {#1} }
+}
+
+\newcommand{\MOOSE}[0]
+{
+    {\TEXT{\texttt{\textcolor{red}{MOOSE}}}}
 }
 
 \tikzset{
@@ -54,11 +68,12 @@
 
 \begin{document}
 
-\begin{tikzpicture}[remember picture,overlay] 
-    \node[opacity=1.0] (background) at (current page.center) {
-    \includegraphics[width=\paperwidth,height=\paperheight]{./background.jpg}
-};
-\end{tikzpicture}
+%\begin{tikzpicture}[remember picture,overlay] 
+%    \node[opacity=1.0] (background) at (current page.center) {
+%    \includegraphics[width=\paperwidth,height=\paperheight]{./background.jpg}
+%};
+%
+%\end{tikzpicture}
 
 
 \begin{minipage}{\textwidth}
@@ -83,47 +98,86 @@
 
     \begin{Figure}
 
-    \TEXT{Memory and plasticity involve brain mechanisms from molecular scale
-         to enormous networks.};
+        \begin{itemize}
+            \item \TEXT{Memory and plasticity involve brain mechanisms from molecular scale
+                    to enormous networks.}
+            \item \TEXT{We have developed \textcolor{red}{\MOOSE}, the Multiscale Object
+                    Oriented Simulation Environment, to model plasticity across scales.}
+        \end{itemize}
 
      \begin{tikzpicture}[
-        block/.style={
-             rectangle
-            , align=center
-            , fill=blue!5
-            , rounded corners
-            , text width=4cm
-            , node distance=3cm
-            , font=\fontsize{1cm}{1em}\selectfont
-            , minimum height=4em
+        spy using outlines={circle
+            , magnification=10, connect spies
         }
-        ]
-        \node[block] (network) {Network};
-        \node[block,below of=network] (neuron)  {Neuron};
-        \node[block,below of=neuron] (synaptic) {Synaptic};
-        \node[block,below of=synaptic] (molecular) {Molecular};
-
-        \draw[block,open triangle 90-open triangle 90] (molecular) -- (synaptic);
-        \draw[block,open triangle 90-open triangle 90] (neuron) -- (synaptic);
-        \draw[block,open triangle 90-open triangle 90] (network) -- (neuron);
-
-        \draw[open triangle 90-open triangle 90] (network) -- ++(4,0) --
-        ++(0,-5) |- (synaptic);
-        ;
-
-    \end{tikzpicture} 
-     \begin{tikzpicture}
+        , compartment/.style={cylinder
+             , draw
+             , cylinder uses custom fill
+             , cylinder end fill = red!35
+             , cylinder body fill = red!40
+             , minimum height = 2cm
+             , minimum width = 3cm 
+         }
+         , spine/.style={cylinder 
+             , fill = blue!20
+             , inner sep=1mm
+             , minimum height=5mm
+             , minimum width=10mm
+         }
+         , branch/.style={cylinder
+             , draw
+             , cylinder uses custom fill
+             , cylinder end fill = red!35
+             , cylinder body fill = red!40
+             , minimum height = 5cm
+             , minimum width = 1cm
+         }
+         ]
          \centering
          \node [] (image) at (0,-1) {
-             \includegraphics[scale=0.3,angle=-30]{./images/single_cell.png}
+             \includegraphics[scale=0.2,angle=-30]{./images/ca1_neuron.png}
          };
 
          \foreach \i in {-3,...,3}
          \foreach \j in {-3,...,3}
          {
-             \node[fill=yellow!30,thin,inner sep=0pt, minimum size=3mm,circle] (n\i\j) at (\i, \j) {};
-         }
+             \node[fill=blue!40,opacity=0.3,thin,inner sep=0pt, minimum size=3mm,circle] (n\i\j) at (\i, \j) {};
+         };
+
+         \spy[blue, size=3cm] on (1.65, -1.5) in node[left] at (7,0);
          \node[below=4cm,text width=0.2\textwidth] {\CAPTION{Embed in network}};
+
+         %% Cool. Now create a 3d compartment model here.
+         \begin{scope}[xshift=10cm]
+             \node[compartment] (c1) {};
+             \node[compartment] (c2) at (c1.east) {};
+             \node[compartment] (c3) at (c2.east) {};
+
+             \node[branch,rotate=45] (b1) at ([xshift=10mm,yshift=0mm]c3.before top) {};
+             \node[branch,rotate=-45] (b2) at ([xshift=5mm, yshift=-15mm]c3.base east) {};
+
+            % Spines
+            \node[spine, inner sep=1mm, rotate=135] (s11) at (b1.north east) {};
+            \node[spine, inner sep=1mm, rotate=135] (s12) at ([xshift=3mm]b1.south east) {};
+
+            \node[spine, inner sep=1mm, rotate=45] (s21) at (b2.north east) {};
+            \node[spine, inner sep=1mm, rotate=45] (s22) at ([xshift=-3mm]b2.south east) {};
+             
+         \end{scope}
+
+         %% Scope to draw chemisty 
+         \begin{scope}
+
+             \node[] (chemical) at ([yshift=-4cm]c2.south) {
+                 \includegraphics[scale=0.2]{./images/chemical_reactions.png}
+             };
+
+             \draw[decoration={text along path, text={Chemical model}},
+                 decorate] (c1.center) to [bend right] (chemical);
+
+
+         \end{scope}
+
+
      \end{tikzpicture} 
      \begin{tikzpicture}
         \node[] (image) {
@@ -132,8 +186,6 @@
     \end{tikzpicture} %
 
     \vspace{1cm}
-    \TEXT{We have developed \textcolor{red}{MOOSE}, the Multiscale Object
-        Oriented Simulation Environment, to model plasticity across scales.}
 
     \end{Figure}
 
@@ -142,14 +194,6 @@
 
     \begin{Figure}
         \centering
-
-        \SECTION{The MOOSE architecture}
-
-        \begin{tikzpicture}
-            \node[] (image) {
-                \includegraphics[width=0.9\textwidth]{./images/architecture.png}
-            };
-        \end{tikzpicture}
 
         \SECTION{Modular solvers available in MOOSE}
 

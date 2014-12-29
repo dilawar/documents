@@ -31,7 +31,7 @@
 {
     \includegraphics[scale=0.35]{./images/heading.png}
     \fontsize{2.5cm}{1cm}\selectfont \textcolor{red}{#1}
-    \vspace{1cm}
+    \vspace{0.5cm}
 }
 
 \newcommand{\SECTION}[1]
@@ -54,15 +54,10 @@
     {\fontsize{1.2cm}{1.2cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
 }
 
-\newcommand{\MOOSE}[0]
-{
-    \TEXT{\texttt{\textcolor{red}{MOOSE}}}
-}
+\newcommand{\MOOSE}[0]{\TEXT{\texttt{\textcolor{red}{MOOSE}}}}
 
-\newcommand{\MOOSELOGO}[0]
-{
-    {\tikz \node[inner sep=1mm] {\includegraphics[scale=0.6]{./images/moose_logo_tiny.png}};}
-}
+\newcommand{\MOOSELOGO}[0]{
+    \tikz \node[inner sep=1mm] {\includegraphics[scale=0.6]{./images/moose_logo_tiny.png}}; }
 
 \tikzset{
   every overlay node/.style={
@@ -255,73 +250,64 @@
 \begin{Figure}
 
     %% Solvers here
-    \SECTION{Modular Solvers Available in \MOOSELOGO}
+    \SECTION{Modular Solvers in \MOOSELOGO}
 
-    \edef\figwidth{0.20\textwidth}
-
+    %% Modular solvers available in MOOSE
+    \edef\figwidth{0.2\textwidth}
     \begin{tikzpicture}
         \node[] (image) {
             \includegraphics[width=\figwidth]{./images/stochastic_solver.png}
         }; 
-        \node[text width=1.5*\figwidth] at (image.north) {\CAPTION{Chemical
+        \node[text width=1.5*\figwidth] at (image.south) {\CAPTION{Chemical
                 reaction at single molecule level}};
     \end{tikzpicture} \hfill
     \begin{tikzpicture}
         \node[] (image) {
             \includegraphics[width=\figwidth]{./images/ksolve_dsolve.png}
         };
-        \node[text width=1.5*\figwidth] at (image.north) {\CAPTION{Reaction
+        \node[text width=1.5*\figwidth] at (image.south) {\CAPTION{Reaction
                 Diffusion Solver}};
     \end{tikzpicture} \hfill
     \begin{tikzpicture}
         \node[] (image) {
             \includegraphics[width=\figwidth]{./images/hsolve.png}
         };
-        \node[text width=\figwidth] at (image.north) {\CAPTION{Electrical:
+        \node[text width=\figwidth] at (image.south) {\CAPTION{Electrical:
                 Hines Solve}};
     \end{tikzpicture}
 
-
-
-    \SECTION{Simulation: Putting them all-together}
-    \begin{tikzpicture}
-        \node [] (simulation) {
-            \includegraphics[width=0.5\textwidth]{./images/simulation.png}
-        };
-    \end{tikzpicture}
 \end{Figure}
 
-\HEADING{Some projects using MOOSE}
+\HEADING{Some projects using \MOOSELOGO}
+
 \begin{Figure}
+    \edef\figwidth{0.9\textwidth}
     \begin{tikzpicture}
-
-        \node[below=6cm, text width=0.5\textwidth] {\CAPTION{
-                Chemical switches embedded in detailed neuronal models embedded in a
-                network.}
+        \node[fill=red!3] (aditya) {
+            \includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}
         };
 
-    \end{tikzpicture} %
-    \begin{tikzpicture}
-
-        \node[] (image) {
-            \includegraphics[width=0.5\textwidth]{./images/fullmodel_moogli.png}
+        \node[minimum height=0cm,text width=\figwidth] (aditya_caption) at
+        ([yshift=1cm]aditya.north) {
+            \CAPTION{ Network coding and computation in olfaction and sematosensory
+                cortex. It explains linear coding and phase-decorrelation and
+                predicts connectivity, lateral dendrite output structure.
+            }
         };
-
-        \node[below=6cm,text width=0.5\textwidth]{ \CAPTION{
-                Network coding and computation in olfaction and sematosensory
-                cortex.}
+        \node [] (result) at ([yshift=-2cm]aditya.south) {
+            \includegraphics[width=\figwidth,trim=0cm 0cm 0cm 3.4cm, clip]{./images/aditya_work.png}
         };
-
     \end{tikzpicture}%
+    %% One more model here.
 
     \begin{tikzpicture}
-        \node[] (image) {
-            \includegraphics[width=0.5\textwidth]{./images/poster_runView.png}
+
+        \node[] (robust) {
+            \includegraphics[width=\figwidth]{./images/poster_runView.png}
         };
 
-        \node[below=6cm,text width=0.5\textwidth] {\CAPTION{
-                Robustness of chemical switches with respect to stochasticity and
-                parameters.}
+        \node[text width=\figwidth] at (robust.north) {
+            \CAPTION{Robustness of chemical switches with respect to stochasticity and parameters.}
         };
 
     \end{tikzpicture}

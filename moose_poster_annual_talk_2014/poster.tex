@@ -5,6 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{tikz}
+\usepackage{enumitem}
 \usetikzlibrary{shapes,arrows}
 \usetikzlibrary{decorations.text}
 \usetikzlibrary{spy,calc}
@@ -35,22 +36,32 @@
 
 \newcommand{\SECTION}[1]
 {
-    {\fontsize{2cm}{1.5cm}\selectfont \textsc{\textcolor{blue}{#1}}}
+    {\fontsize{2cm}{1.5cm}\selectfont \textsc{\textcolor{blue}{#1}}\par}
 }
 
 \newcommand{\CAPTION}[1]
 {
-    \Huge \texttt{#1}
+    {\fontsize{1cm}{1cm}\fontfamily{\sfdefault}\selectfont {\textcolor{black}{#1}}\par}
 }
 
 \newcommand{\TEXT}[1]
 {
-   { \fontsize{1.5cm}{1.5cm}\fontfamily{\sfdefault}\selectfont {#1} }
+   { \fontsize{1.5cm}{1.5cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
+}
+
+\newcommand{\ITEM}[1]
+{
+    {\fontsize{1.2cm}{1.2cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
 }
 
 \newcommand{\MOOSE}[0]
 {
-    {\TEXT{\texttt{\textcolor{red}{MOOSE}}}}
+    \TEXT{\texttt{\textcolor{red}{MOOSE}}}
+}
+
+\newcommand{\MOOSELOGO}[0]
+{
+    {\tikz \node[inner sep=1mm] {\includegraphics[scale=0.6]{./images/moose_logo_tiny.png}};}
 }
 
 \tikzset{
@@ -70,9 +81,8 @@
 
 %\begin{tikzpicture}[remember picture,overlay] 
 %    \node[opacity=1.0] (background) at (current page.center) {
-%    \includegraphics[width=\paperwidth,height=\paperheight]{./background.jpg}
-%};
-%
+%        \includegraphics[width=\paperwidth,height=\paperheight]{./background/background.jpg}
+%    };
 %\end{tikzpicture}
 
 
@@ -101,8 +111,11 @@
         \begin{itemize}
             \item \TEXT{Memory and plasticity involve brain mechanisms from molecular scale
                     to enormous networks.}
-            \item \TEXT{We have developed \textcolor{red}{\MOOSE}, the Multiscale Object
-                    Oriented Simulation Environment, to model plasticity across scales.}
+
+            \item \TEXT{We have developed \textcolor{red}{\textsc{MOOSE}}
+                    \MOOSELOGO the Multiscale Object Oriented Simulation
+                    Environment, to model plasticity across scales.}
+
         \end{itemize}
 
      \begin{tikzpicture}[
@@ -144,7 +157,7 @@
          };
 
          \spy[blue, size=3cm] on (1.65, -1.5) in node[left] at (7,0);
-         \node[below=4cm,text width=0.2\textwidth] {\CAPTION{Embed in network}};
+         \node[below=4cm,text width=0.3\textwidth] {\CAPTION{Embed in network}};
 
          %% Cool. Now create a 3d compartment model here.
          \begin{scope}[xshift=10cm]
@@ -167,69 +180,71 @@
          %% Scope to draw chemisty 
          \begin{scope}
 
-             \node[] (chemical) at ([yshift=-4cm]c2.south) {
+             \node[] (chemical) at ([yshift=-4.5cm]c2.south) {
                  \includegraphics[scale=0.2]{./images/chemical_reactions.png}
              };
 
              %%  
-             \draw[o-o] (c1.center) to [bend right] (chemical) node [right]  {\LARGE
-                 Chemical model};
+             \draw[o-o] (c1.center) to [bend right] (chemical) node [right]
+                 {\LARGE{Chemical models}};
             
              %% Add transportation model.
-             \node[] (transport) at ([xshift=4cm,yshift=-1cm]s12.north) {
-                 \includegraphics[scale=0.8]{./images/transport_mechanism.png}
+             \node[] (transport) at ([xshift=6cm,yshift=-1cm]s12.north) {
+                 \includegraphics[scale=0.9]{./images/transport_mechanism.png}
              };
 
-             \draw[o-o] (s12.center) to [] (transport) ++(0,1cm) node [above] {\LARGE Trafficking
-                 models};
-
-             %\draw[decoration={text along path, text={Chemical model}},
-             %    decorate] (c1.center) to [bend right] (chemical);
-
+             \draw[o-o] (s12.center) to [] (transport) ++(0,1.2cm) node [above] 
+                {\LARGE{Trafficking models}};
 
          \end{scope}
 
 
      \end{tikzpicture} 
-     \begin{tikzpicture}
-        \node[] (image) {
-            \includegraphics[width=0.5\textwidth]{./images/Gallery_Moose_Multiscale.png}
-        };
-    \end{tikzpicture} %
-
-    \vspace{1cm}
-
     \end{Figure}
 
 
-    \HEADING{Multiscale Modeling in MOOSE}
+    \HEADING{Multiscale Modeling in \MOOSELOGO}
 
     \begin{Figure}
-        \centering
 
-        \SECTION{Modular solvers available in MOOSE}
-
-        \footnote{Write the time-scales}
-
+        \edef\figwidth{0.45\textwidth}
         \begin{tikzpicture}
-            \node[] (image) {
-                \includegraphics[width=0.15\textwidth]{./images/stochastic_solver.png}
-            }; 
-            \node[below=3.5cm, text width=0.3\textwidth] {\CAPTION{Stochastic(GSSA): GSolve}};
-        \end{tikzpicture} \hfill
-        \begin{tikzpicture}
-            \node[] (image) {
-                \includegraphics[width=0.15\textwidth]{./images/ksolve_dsolve.png}
-            };
-            \node[below=3.5cm, text width=0.3\textwidth] {\CAPTION{ODE + Diffusion: KSolve + DSolve}};
-        \end{tikzpicture} \hfill
-        \begin{tikzpicture}
-            \node[] (image) {
-                \includegraphics[width=0.15\textwidth]{./images/hsolve.png}
-            };
-            \node[below=3.5cm, text width=0.3\textwidth] {\CAPTION{Electrical: HSolve}};
-        \end{tikzpicture}
+            \node[fill=red!5] (text) {
+                \begin{minipage}{0.35\textwidth}
+                    {\TEXT{\textcolor{red}{Why multiscale?}}}
+                    \begin{itemize}[itemsep=1cm,label={.}]
+                        \item \ITEM{$10^{11}$ cells}
+                        \item \ITEM{$10^{15}$ synapses }
+                        \item \ITEM{$10000$? reactions per synapse}
+                        \item \ITEM{Electrical events: $< 1$ ms }
+                        \item \ITEM{Chemical events: $1\; \text{sec} \rightarrow
+                            1000\; \text{sec}$ }
+                    \item \ITEM{Structural events: $100\; \text{sec} \rightarrow
+                        \text{months}$}
+                \item \ITEM{Lifetime of a protein: days}
+                \item \ITEM{Lifetime of a neuron: 100 years }
+                \item \ITEM{Lifetime of a memory: 100 years}
+            \end{itemize}
+        \end{minipage}
+    };
+    \end{tikzpicture} %
+    \begin{tikzpicture}
+        \node [] (moose_cell) {
+            \includegraphics[width=\figwidth]{./images/moose_interface_single_cell.png}
+        };
+        \node [text width=\figwidth] (captionA) at (moose_cell.south) {\CAPTION{Single Neuron Model}};
 
+        \node[] (olfaction) at ($(captionA)+(0,-6cm)$) {
+            \includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}
+        };
+        \node [text width=\figwidth] (captionB) at (olfaction.south)
+        {\CAPTION{Olfactory bulb network}};
+
+        \node[] (signalling) at ($(captionB)+(0,-5cm)$) {
+            \includegraphics[width=\figwidth]{./images/poster_runView.png}
+        };
+        \node [text width=\figwidth] (captionC) at (signalling.south) {\CAPTION{Signalling Model}};
+    \end{tikzpicture}
     \end{Figure}
 
 
@@ -237,30 +252,38 @@
 
 %% Column 2
 
-
-
 \begin{Figure}
-    \SECTION{Simulation: Putting them all-together}
+
+    %% Solvers here
+    \SECTION{Modular Solvers Available in \MOOSELOGO}
+
+    \edef\figwidth{0.20\textwidth}
 
     \begin{tikzpicture}
-        \node[ rounded corners, fill=blue!10] (text) {
-        \begin{minipage}{0.45\textwidth}
-            \Huge
-            \begin{itemize}
-                \item $10^{11}$ cells
-                \item $10^{15}$ synapses 
-                \item $10000$? reactions per synapse  
-                \item Electrical events: $< 1$ ms  
-                \item Chemical events: $1\; \text{sec} \rightarrow 1000\; \text{sec}$ 
-                \item Structural events: $100\; \text{sec} \rightarrow \text{months}$
-                \item Lifetime of a protein: days 
-                \item Lifetime of a neuron: 100 years 
-                \item Lifetime of a memory: 100 years
-            \end{itemize}
-
-        \end{minipage}
+        \node[] (image) {
+            \includegraphics[width=\figwidth]{./images/stochastic_solver.png}
+        }; 
+        \node[text width=1.5*\figwidth] at (image.north) {\CAPTION{Chemical
+                reaction at single molecule level}};
+    \end{tikzpicture} \hfill
+    \begin{tikzpicture}
+        \node[] (image) {
+            \includegraphics[width=\figwidth]{./images/ksolve_dsolve.png}
         };
-    \end{tikzpicture} %
+        \node[text width=1.5*\figwidth] at (image.north) {\CAPTION{Reaction
+                Diffusion Solver}};
+    \end{tikzpicture} \hfill
+    \begin{tikzpicture}
+        \node[] (image) {
+            \includegraphics[width=\figwidth]{./images/hsolve.png}
+        };
+        \node[text width=\figwidth] at (image.north) {\CAPTION{Electrical:
+                Hines Solve}};
+    \end{tikzpicture}
+
+
+
+    \SECTION{Simulation: Putting them all-together}
     \begin{tikzpicture}
         \node [] (simulation) {
             \includegraphics[width=0.5\textwidth]{./images/simulation.png}

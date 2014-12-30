@@ -29,7 +29,8 @@
 % This macro creates header.
 \newcommand{\HEADING}[1]
 {
-    \includegraphics[scale=0.35]{./images/heading.png}
+    %\includegraphics[scale=0.35]{./images/heading.png}
+    \MOOSELOGO
     \fontsize{2.5cm}{1cm}\selectfont \textcolor{red}{#1}
     \vspace{0.5cm}
 }
@@ -54,10 +55,11 @@
     {\fontsize{1.2cm}{1.2cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
 }
 
-\newcommand{\MOOSE}[0]{\TEXT{\texttt{\textcolor{red}{MOOSE}}}}
+\newcommand{\MOOSE}[0]{\TEXT{\textsc{\textcolor{red}{MOOSE}}}}
 
 \newcommand{\MOOSELOGO}[0]{
-    \tikz \node[inner sep=1mm] {\includegraphics[scale=0.6]{./images/moose_logo_tiny.png}}; }
+    \tikz \node[inner sep=1mm] {\includegraphics[scale=0.6]{./images/moose_logo_tiny.png}}; 
+}
 
 \tikzset{
   every overlay node/.style={
@@ -74,11 +76,11 @@
 
 \begin{document}
 
-%\begin{tikzpicture}[remember picture,overlay] 
-%    \node[opacity=1.0] (background) at (current page.center) {
-%        \includegraphics[width=\paperwidth,height=\paperheight]{./background/background.jpg}
-%    };
-%\end{tikzpicture}
+\begin{tikzpicture}[remember picture,overlay] 
+    \node[opacity=1.0] (background) at (current page.center) {
+        \includegraphics[width=\paperwidth,height=\paperheight]{./background/background.jpg}
+    };
+\end{tikzpicture}
 
 
 \begin{minipage}{\textwidth}
@@ -108,7 +110,7 @@
                     to enormous networks.}
 
             \item \TEXT{We have developed \textcolor{red}{\textsc{MOOSE}}
-                    \MOOSELOGO the Multiscale Object Oriented Simulation
+                    the Multiscale Object Oriented Simulation
                     Environment, to model plasticity across scales.}
 
         \end{itemize}
@@ -117,29 +119,7 @@
         spy using outlines={circle
             , magnification=10, connect spies
         }
-        , compartment/.style={cylinder
-             , draw
-             , cylinder uses custom fill
-             , cylinder end fill = red!35
-             , cylinder body fill = red!40
-             , minimum height = 2cm
-             , minimum width = 3cm 
-         }
-         , spine/.style={cylinder 
-             , fill = blue!20
-             , inner sep=1mm
-             , minimum height=5mm
-             , minimum width=10mm
-         }
-         , branch/.style={cylinder
-             , draw
-             , cylinder uses custom fill
-             , cylinder end fill = red!35
-             , cylinder body fill = red!40
-             , minimum height = 5cm
-             , minimum width = 1cm
-         }
-         ]
+                 ]
          \centering
          \node [] (image) at (0,-1) {
              \includegraphics[scale=0.2,angle=-30]{./images/ca1_neuron.png}
@@ -151,45 +131,76 @@
              \node[fill=blue!40,opacity=0.3,thin,inner sep=0pt, minimum size=3mm,circle] (n\i\j) at (\i, \j) {};
          };
 
-         \spy[blue, size=3cm] on (1.65, -1.5) in node[left] at (7,0);
-         \node[below=4cm,text width=0.3\textwidth] {\CAPTION{Embed in network}};
+         \spy[blue, size=3cm] on (1.65, -1.5) in node[left] at (7,3);
+         \node[below=4cm,text width=0.3\textwidth] {\CAPTION{A single neuron is
+                 embedded in lattice of neural network}};
 
          %% Cool. Now create a 3d compartment model here.
-         \begin{scope}[xshift=10cm]
+         \begin{scope}[xshift=11cm, yshift=3cm
+             , compartment/.style={cylinder
+                 , draw
+                 , cylinder uses custom fill
+                 , cylinder end fill = red!35
+                 , cylinder body fill = red!40
+                 , inner sep = 3mm
+                 , minimum height = 1cm
+                 , minimum width = 1cm 
+             }
+             , spine/.style={cylinder 
+                 , fill = blue!20
+                 , inner sep=1mm
+                 , minimum height=1mm
+                 , minimum width=3mm
+             }
+             , branch/.style={cylinder
+                 , draw
+                 , cylinder uses custom fill
+                 , cylinder end fill = red!35
+                 , cylinder body fill = red!40
+                 , minimum height = 1.5cm
+                 , minimum width = 0.5cm
+                 , inner sep = 1mm
+             }
+             ]
+
              \node[compartment] (c1) {};
              \node[compartment] (c2) at (c1.east) {};
              \node[compartment] (c3) at (c2.east) {};
 
-             \node[branch,rotate=45] (b1) at ([xshift=10mm,yshift=0mm]c3.before top) {};
-             \node[branch,rotate=-45] (b2) at ([xshift=5mm, yshift=-15mm]c3.base east) {};
+             \node[branch,rotate=45] (b1) at ([xshift=4mm,yshift=2mm]c3.before top) {};
+             \node[branch,rotate=-45] (b2) at ([xshift=1mm, yshift=-7mm]c3.base east) {};
 
-            % Spines
-            \node[spine, inner sep=1mm, rotate=135] (s11) at (b1.north east) {};
-            \node[spine, inner sep=1mm, rotate=135] (s12) at ([xshift=3mm]b1.south east) {};
+             % Spines
+             \node[spine, inner sep=1mm, rotate=135] (s11) at (b1.north east) {};
+             \node[spine, inner sep=1mm, rotate=135] (s12) at ([xshift=3mm]b1.south east) {};
 
-            \node[spine, inner sep=1mm, rotate=45] (s21) at (b2.north east) {};
-            \node[spine, inner sep=1mm, rotate=45] (s22) at ([xshift=-3mm]b2.south east) {};
-             
+             \node[spine, inner sep=1mm, rotate=45] (s21) at (b2.north east) {};
+             \node[spine, inner sep=1mm, rotate=45] (s22) at ([xshift=-3mm]b2.south east) {};
+
          \end{scope}
 
          %% Scope to draw chemisty 
          \begin{scope}
 
-             \node[] (chemical) at ([yshift=-4.5cm]c2.south) {
-                 \includegraphics[scale=0.2]{./images/chemical_reactions.png}
+             \node[] (chemical) at ([yshift=-5.5cm]c2.south) {
+                 \includegraphics[width=0.35\textwidth, trim=5mm 5mm 5mm 5mm, clip]{./images/chemical_reactions.png}
              };
 
              %%  
-             \draw[o-o] (c1.center) to [bend right] (chemical) node [right]
-                 {\LARGE{Chemical models}};
+             \node [above] (chemicallabel) at ([yshift=-2cm]c1.south) {\LARGE{
+                     Chemical models}};
+
+             \draw[o-o] (c1.center) to [bend right] (chemicallabel.center);
             
              %% Add transportation model.
-             \node[] (transport) at ([xshift=6cm,yshift=-1cm]s12.north) {
-                 \includegraphics[scale=0.9]{./images/transport_mechanism.png}
+             \node[] (transport) at ([xshift=7cm,yshift=-3cm]s12.north) {
+                 \includegraphics[width=0.3\textwidth]{./images/transport_mechanism.png}
              };
 
-             \draw[o-o] (s12.center) to [] (transport) ++(0,1.2cm) node [above] 
-                {\LARGE{Trafficking models}};
+             \node[] (tlabel) at ([xshift=0.5cm, yshift=-1cm]transport.north) {\LARGE{Trafficking
+                     models}};
+
+             \draw[o-o] (s21.center) to [bend left] (tlabel) ;
 
          \end{scope}
 
@@ -198,48 +209,53 @@
     \end{Figure}
 
 
-    \HEADING{Multiscale Modeling in \MOOSELOGO}
+    \HEADING{Multiscale Modeling in \MOOSE}
 
     \begin{Figure}
 
-        \edef\figwidth{0.45\textwidth}
         \begin{tikzpicture}
+
             \node[fill=red!5] (text) {
-                \begin{minipage}{0.35\textwidth}
+                \begin{minipage}{0.9\textwidth}
                     {\TEXT{\textcolor{red}{Why multiscale?}}}
-                    \begin{itemize}[itemsep=1cm,label={.}]
+                    \begin{itemize}[]
                         \item \ITEM{$10^{11}$ cells}
                         \item \ITEM{$10^{15}$ synapses }
-                        \item \ITEM{$10000$? reactions per synapse}
-                        \item \ITEM{Electrical events: $< 1$ ms }
-                        \item \ITEM{Chemical events: $1\; \text{sec} \rightarrow
-                            1000\; \text{sec}$ }
-                    \item \ITEM{Structural events: $100\; \text{sec} \rightarrow
-                        \text{months}$}
-                \item \ITEM{Lifetime of a protein: days}
-                \item \ITEM{Lifetime of a neuron: 100 years }
-                \item \ITEM{Lifetime of a memory: 100 years}
+                        %\item \ITEM{$10000$? reactions per synapse}
+                        %\item \ITEM{Electrical events: $< 1$ ms }
+                        %\item \ITEM{Chemical events: $1\; \text{sec} \rightarrow
+                            %1000\; \text{sec}$ }
+                    %\item \ITEM{Structural events: $100\; \text{sec} \rightarrow
+                        %\text{months}$}
+                %\item \ITEM{Lifetime of a protein: days}
+                %\item \ITEM{Lifetime of a neuron: 100 years }
+                %\item \ITEM{Lifetime of a memory: 100 years}
             \end{itemize}
         \end{minipage}
     };
-    \end{tikzpicture} %
+
+    \end{tikzpicture}
+
+    \edef\figwidth{0.3\columnwidth}
+    \begin{tikzpicture}
+        \node[] (signalling)  {
+            \includegraphics[width=\figwidth]{./images/poster_runView.png}
+        };
+        \node [text width=\figwidth, below=2.7cm] (captionC)  {\CAPTION{Signalling Model}};
+    \end{tikzpicture}%
     \begin{tikzpicture}
         \node [] (moose_cell) {
             \includegraphics[width=\figwidth]{./images/moose_interface_single_cell.png}
         };
-        \node [text width=\figwidth] (captionA) at (moose_cell.south) {\CAPTION{Single Neuron Model}};
-
-        \node[] (olfaction) at ($(captionA)+(0,-6cm)$) {
+        \node [text width=\figwidth,below=3cm] (captionA) {\CAPTION{Single Neuron Model}};
+    \end{tikzpicture}%
+    \begin{tikzpicture}
+        \node[] (olfaction) {
             \includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}
         };
-        \node [text width=\figwidth] (captionB) at (olfaction.south)
-        {\CAPTION{Olfactory bulb network}};
-
-        \node[] (signalling) at ($(captionB)+(0,-5cm)$) {
-            \includegraphics[width=\figwidth]{./images/poster_runView.png}
-        };
-        \node [text width=\figwidth] (captionC) at (signalling.south) {\CAPTION{Signalling Model}};
-    \end{tikzpicture}
+        \node [text width=\figwidth, below=2.7cm] (captionB) {\CAPTION{Olfactory
+                bulb model}};
+    \end{tikzpicture}%
     \end{Figure}
 
 
@@ -250,7 +266,7 @@
 \begin{Figure}
 
     %% Solvers here
-    \SECTION{Modular Solvers in \MOOSELOGO}
+    \SECTION{Modular Solvers in \MOOSE}
 
     %% Modular solvers available in MOOSE
     \edef\figwidth{0.2\textwidth}
@@ -278,7 +294,7 @@
 
 \end{Figure}
 
-\HEADING{Some projects using \MOOSELOGO}
+\HEADING{Some projects using \MOOSE}
 
 \begin{Figure}
     \edef\figwidth{0.9\textwidth}
@@ -286,27 +302,26 @@
         \node[fill=red!3] (aditya) {
             \includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}
         };
+        \node [] (result) at ([yshift=-2cm]aditya.south) {
+            \includegraphics[width=\figwidth,trim=0cm 0cm 0cm 3.4cm, clip]{./images/aditya_work.png}
+        };
 
         \node[minimum height=0cm,text width=\figwidth] (aditya_caption) at
-        ([yshift=1cm]aditya.north) {
+        ([yshift=-1cm]result.south) {
             \CAPTION{ Network coding and computation in olfaction and sematosensory
                 cortex. It explains linear coding and phase-decorrelation and
                 predicts connectivity, lateral dendrite output structure.
             }
         };
-        \node [] (result) at ([yshift=-2cm]aditya.south) {
-            \includegraphics[width=\figwidth,trim=0cm 0cm 0cm 3.4cm, clip]{./images/aditya_work.png}
-        };
-    \end{tikzpicture}%
+    \end{tikzpicture}
     %% One more model here.
 
     \begin{tikzpicture}
-
         \node[] (robust) {
             \includegraphics[width=\figwidth]{./images/poster_runView.png}
         };
 
-        \node[text width=\figwidth] at (robust.north) {
+        \node[text width=\figwidth] at (robust.south) {
             \CAPTION{Robustness of chemical switches with respect to stochasticity and parameters.}
         };
 
@@ -316,8 +331,32 @@
 %% Column 3
 \begin{Figure}
     
-    \HEADING{Summary}
+    \HEADING{Sahil}
 
+    \begin{tikzpicture}
+        \node [] (timeseries) {
+            \includegraphics[width=0.9\textwidth]{./images/TimeSeries.png}
+        };
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+        \node [] (timeline) {
+            \includegraphics[width=0.9\textwidth]{./images/timeline.png}
+        };
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+        \node [] (model) {
+            \includegraphics[width=0.45\textwidth]{./images/model.png}
+        };
+    \end{tikzpicture}%
+    \begin{tikzpicture}
+        \node[] (ktseries) {
+            \includegraphics[width=0.45\textwidth]{./images/KT_statistic.png}
+        };
+    \end{tikzpicture}
+
+    \HEADING{Summary}
     \HUGE We use models to
     \begin{itemize}
             

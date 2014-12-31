@@ -40,7 +40,7 @@
 
 \newcommand{\SECTION}[1]
 {
-    {\fontsize{2cm}{1.5cm}\selectfont \textsc{\textcolor{blue}{#1}}\par}
+    {\fontsize{1.8cm}{1.5cm}\selectfont \textsc{\textcolor{blue}{#1}}\par}
 }
 
 \newcommand{\CAPTION}[1]
@@ -50,7 +50,7 @@
 
 \newcommand{\TEXT}[1]
 {
-   { \fontsize{1.5cm}{1.5cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
+   { \fontsize{1.2cm}{1.2cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
 }
 
 \newcommand{\ITEM}[1]
@@ -85,18 +85,30 @@
     };
 \end{tikzpicture}
 
-
-\begin{minipage}{\textwidth}
+\begin{tikzpicture}
     \centering
-    \fontsize{4cm}{1em}\selectfont \textcolor{red}{Modelling Memory Across Scale}
-    \\
-    \fontsize{1.5cm}{1em}\selectfont Aditya Gilra, Aviral Goel, Dilawar Singh,
-    Harsha Rani, Sahil Moza, Subhasis Ray, Upinder Bhalla
-\end{minipage}
+    \node[] (logo) { 
+        \includegraphics[height=6cm]{./images/NCBS-Logo.jpg}
+    };
+
+    \node [] (title) at ([xshift=40cm]logo.east) {
+        \fontsize{4cm}{1em}\selectfont \textcolor{red}{Modelling Memory Across
+            Scales}
+    };
+
+    \node[] (authors) at ([yshift=-1cm]title.south) {
+        \fontsize{1.5cm}{1em}\selectfont Subhasis Ray, Harsha Rani, Sahil Moza,
+        Aditya Gilra,  Aviral Goel, Dilawar Singh, Upinder Bhalla
+    };
+
+    \node [] (mooselogo) at ([xshift=20cm]title.east) {
+        \includegraphics[height=6cm]{./images/moose_logo_tiny.png}
+    };
+\end{tikzpicture}
 
 %% Three columns
 \vspace{5cm}
-\setlength{\columnsep}{6cm}
+\setlength{\columnsep}{4.5cm}
 \begin{multicols}{3}
     
 %%%%%%%%%%%% Column 1
@@ -210,7 +222,7 @@
     \end{Figure}
 
 
-    \HEADING{Multiscale Modeling in \MOOSE}
+    \HEADING{Multiscale Modeling in MOOSE}
     %% Modular solvers available in MOOSE
     \edef\figwidth{0.12\textwidth}
     
@@ -348,7 +360,7 @@
 \vfill
 \columnbreak
 
-\HEADING{Some projects using \MOOSE}
+\HEADING{Some projects using MOOSE}
 \begin{Figure}
     \edef\figwidth{0.9\textwidth}
     \begin{tikzpicture}
@@ -384,17 +396,11 @@
 %% Column 3
 \begin{Figure}
     
-    \HEADING{Sahil}
-
-    \begin{tikzpicture}
-        \node [] (timeseries) {
-            \includegraphics[width=0.9\textwidth]{./images/TimeSeries.png}
-        };
-    \end{tikzpicture}
+    \HEADING{Robustness of Chemical Switches}
 
     \begin{tikzpicture}
         \node [] (timeline) {
-            \includegraphics[width=0.9\textwidth]{./images/timeline.png}
+            \includegraphics[width=\textwidth]{./images/timeline.png}
         };
     \end{tikzpicture}
 
@@ -407,25 +413,36 @@
         \node[] (ktseries) {
             \includegraphics[width=0.45\textwidth]{./images/KT_statistic.png}
         };
+
     \end{tikzpicture}
 
+    \begin{tikzpicture}
+        \node [] (timeseries) {
+            \includegraphics[width=\textwidth]{./images/TimeSeries.png}
+        };
+        \node [] (caption) at ([xshift=-4cm,yshift=-4cm]timeseries.north) {
+            \CAPTION{Stochastic simulation of bistable chemical models}
+        };
+    \end{tikzpicture}
+
+
+
     \HEADING{Summary}
-    \HUGE We use models to
+    \TEXT{\bf We use models to,}
     \begin{itemize}
-            
-        \item Integrate many scales of neuronal data with basic
-            physical/chemical principles.
-        \item Explain phenomenon of plasticity, activity and neuronal coding.
-        \item Predict circuit mechanisms, plasticity rules, and emergent
+        \item \TEXT{Integrate many scales of neuronal data with basic
+            physical/chemical principles.}
+        \item \TEXT{Explain phenomenon of plasticity, activity and neuronal
+                coding.}
+        \item \TEXT{Predict circuit mechanisms, plasticity rules, and emergent
             phenomena such as \emph{decorrelation}, \emph{robustness}, and
-            \emph{memory decay}.
+            \emph{memory decay}.}
 
     \end{itemize}
 
-    \textbf{We have developed MOOSE to carry out these simulations}.
+    \TEXT{\bf We have developed MOOSE to carry out these simulations.}
 
 \end{Figure}
 
 \end{multicols}
-
 \end{document}

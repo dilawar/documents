@@ -322,19 +322,21 @@
     \end{Figure}
 
     \begin{Figure}
-        \edef\figwidth{0.3\columnwidth}
+        \edef\figwidth{0.3\textwidth}
         \begin{tikzpicture}
             \node[] (signalling)  {
                 \includegraphics[width=\figwidth]{./images/poster_runView.png}
             };
             \node [text width=\figwidth, below=2.7cm] (captionC)  {\CAPTION{Signalling Model}};
         \end{tikzpicture}%
+        \hfill
         \begin{tikzpicture}
             \node [] (moose_cell) {
                 \includegraphics[width=\figwidth]{./images/_1_7.jpeg}
             };
             \node [text width=\figwidth,below=3.5cm] (captionA) {\CAPTION{Single Neuron Model}};
         \end{tikzpicture}%
+        \hfill
         \begin{tikzpicture}
             \node[] (olfaction) {
                 \includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}

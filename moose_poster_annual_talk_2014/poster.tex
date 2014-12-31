@@ -362,35 +362,30 @@
 
 \HEADING{Some projects using MOOSE}
 \begin{Figure}
-    \edef\figwidth{0.9\textwidth}
-    \begin{tikzpicture}
-        \node[fill=red!3] (aditya) {
-            \includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}
-        };
-        \node [] (result) at ([yshift=-2cm]aditya.south) {
-            \includegraphics[width=\figwidth,trim=0cm 0cm 0cm 3.4cm, clip]{./images/aditya_work.png}
-        };
+    \edef\figwidth{0.95\textwidth}
+    \TEXT{ Network coding and computation in olfaction and somatosensory
+        cortex. It explains linear coding and phase-decorrelation and
+        predicts connectivity, lateral dendrite output structure.}
 
-        \node[minimum height=0cm,text width=\figwidth] (aditya_caption) at
-        ([yshift=-1cm]result.south) {
-            \CAPTION{ Network coding and computation in olfaction and sematosensory
-                cortex. It explains linear coding and phase-decorrelation and
-                predicts connectivity, lateral dendrite output structure.
-            }
+    \begin{tikzpicture}
+        \node[] (aditya) {
+            \includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}
         };
     \end{tikzpicture}
     %% One more model here.
 
+    \TEXT{TODO: text here}
     \begin{tikzpicture}
         \node[] (robust) {
-            \includegraphics[width=\figwidth]{./images/poster_runView.png}
+            \includegraphics[width=0.6\textwidth]{./images/chemical_model.png}
         };
-
-        \node[text width=\figwidth] at (robust.south) {
-            \CAPTION{Robustness of chemical switches with respect to stochasticity and parameters.}
+    \end{tikzpicture}%
+    \begin{tikzpicture}
+        \node [] (chemical_result) {
+            \includegraphics[width=0.32\textwidth]{./images/chemical_result.png}
         };
-
     \end{tikzpicture}
+
 \end{Figure}
 
 %% Column 3
@@ -432,7 +427,7 @@
     \begin{itemize}
         \item \TEXT{Integrate many scales of neuronal data with basic
             physical/chemical principles.}
-        \item \TEXT{Explain phenomenon of plasticity, activity and neuronal
+        \item \TEXT{Explain phenomena of plasticity, activity and neuronal
                 coding.}
         \item \TEXT{Predict circuit mechanisms, plasticity rules, and emergent
             phenomena such as \emph{decorrelation}, \emph{robustness}, and

@@ -58,7 +58,7 @@
     {\fontsize{1.2cm}{1.2cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
 }
 
-\newcommand{\MOOSE}[0]{\TEXT{\textsc{\textcolor{red}{MOOSE}}}}
+\newcommand{\MOOSE}[0]{\textsc{\textcolor{red}{MOOSE}}}
 
 \newcommand{\MOOSELOGO}[0]{
     \tikz \node[inner sep=1mm] {\includegraphics[scale=0.6]{./images/moose_logo_tiny.png}}; 
@@ -79,11 +79,11 @@
 
 \begin{document}
 
-%\begin{tikzpicture}[remember picture,overlay] 
-    %\node[opacity=1.0] (background) at (current page.center) {
-        %\includegraphics[width=\paperwidth,height=\paperheight]{./background/background.jpg}
-    %};
-%\end{tikzpicture}
+\begin{tikzpicture}[remember picture,overlay] 
+    \node[opacity=1.0] (background) at (current page.center) {
+        \includegraphics[width=\paperwidth,height=\paperheight]{./background/background.jpg}
+    };
+\end{tikzpicture}
 
 
 \begin{minipage}{\textwidth}
@@ -331,7 +331,7 @@
         \end{tikzpicture}%
         \begin{tikzpicture}
             \node [] (moose_cell) {
-                \includegraphics[width=\figwidth]{./images/moose_interface_single_cell.png}
+                \includegraphics[width=\figwidth]{./images/_1_7.jpeg}
             };
             \node [text width=\figwidth,below=3.5cm] (captionA) {\CAPTION{Single Neuron Model}};
         \end{tikzpicture}%

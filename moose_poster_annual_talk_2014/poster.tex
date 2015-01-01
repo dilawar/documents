@@ -104,8 +104,11 @@
         Aditya Gilra,  Aviral Goel, Dilawar Singh, Upinder Bhalla
     };
 
-    \node [] (mooselogo) at ([xshift=20cm]title.east) {
+    \node [] (mooselogo) at ([xshift=15cm,yshift=0cm]title.east) {
         \includegraphics[height=6cm]{./images/moose_logo_tiny.png}
+    };
+    \node [] (gpl) at ([xshift=23cm,yshift=-2cm]title.east) {
+        \includegraphics[height=3cm,width=8cm]{./images/lgpl.png}
     };
 \end{tikzpicture}
 
@@ -465,12 +468,15 @@
     \end{tikzpicture}
 
     \begin{tikzpicture}
+        \node [] (density) {
+            \includegraphics[width=0.5\textwidth]{./images/sahil_density.png}
+        };
+    \end{tikzpicture}
+    \begin{tikzpicture}
         \node[] (ktseries) {
             \includegraphics[width=0.5\textwidth]{./images/KT_statistic_crop.png}
         };
-
     \end{tikzpicture}
-
 
     \HEADING{3. Summary}
 

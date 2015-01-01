@@ -50,7 +50,7 @@
 
 \newcommand{\TEXT}[1]
 {
-   { \fontsize{1.5cm}{1.2cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
+   { \fontsize{1.4cm}{1.0cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
 }
 
 \newcommand{\ITEM}[1]
@@ -108,7 +108,7 @@
 
 %% Three columns
 \vspace{5cm}
-\setlength{\columnsep}{4.5cm}
+\setlength{\columnsep}{5.5cm}
 \begin{multicols}{3}
     
 %%%%%%%%%%%% Column 1
@@ -224,6 +224,7 @@
 
     \HEADING{2. Multiscale Modeling in MOOSE}
     \edef\figwidth{0.12\textwidth}
+    \vspace{-1cm}
    
     \begin{tikzpicture}
         \node[] (text) {
@@ -346,13 +347,13 @@
             \node[] (signalling)  {
                 \includegraphics[width=\figwidth]{./images/poster_editView.png}
             };
-            \node [text width=\figwidth, below=2.7cm] (captionC)  {\CAPTION{Signalling Model}};
+            \node [text width=\captionwidth, below=2.7cm] (captionC)  {\CAPTION{Signalling Model}};
         \end{tikzpicture}%
         \begin{tikzpicture}
             \node [] (moose_cell) {
                 \includegraphics[width=\figwidth]{./images/_1_7.jpeg}
             };
-            \node [text width=\figwidth,below=3.5cm] (captionA) {\CAPTION{Single Neuron Model}};
+            \node [text width=\captionwidth,below=3.5cm] (captionA) {\CAPTION{Single Neuron Model}};
         \end{tikzpicture}%
     \begin{tikzpicture}
         \node[] (olfaction) {

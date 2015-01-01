@@ -366,10 +366,6 @@
 \edef\figwidth{0.95\textwidth}
 \begin{Figure}
     \SECTION{2.2 Modelling Olfactory Bulb}
-    \TEXT{ Network coding and computation in olfaction and somatosensory
-        cortex. It explains linear coding and phase-decorrelation and
-        predicts connectivity, lateral dendrite output structure.}
-
     \begin{tikzpicture}
         \node[] (aditya) {
             \includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}
@@ -377,8 +373,18 @@
     \end{tikzpicture}
 
     \begin{tikzpicture}
+        \node[] (caption) {
+            \begin{minipage}{0.4\textwidth}
+                \TEXT{
+                    Network coding and computation in olfaction and somatosensory
+                    cortex. It explains linear coding and phase-decorrelation and
+                    predicts connectivity, lateral dendrite output structure.} 
+            \end{minipage}
+        };
+    \end{tikzpicture}%
+    \begin{tikzpicture}
         \node[] (result) {
-            \includegraphics[width=\figwidth,trim=0cm 0cm 0cm 3.5cm,clip]{./images/aditya_work.png}
+            \includegraphics[width=0.6\textwidth]{./images/aditya_work.png}
         };
     \end{tikzpicture}
 

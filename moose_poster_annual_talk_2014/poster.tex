@@ -118,19 +118,11 @@
 \begin{Figure}
     \HEADING{1. Why Multiscale?}
 
-    \begin{Figure}
         %\input{tex/multiscale.tikz}
 
-        \begin{itemize}
-            \item \TEXT{Memory and plasticity involve brain mechanisms from molecular scale
-                    to enormous networks.}
-
-            \item \TEXT{We have developed \textcolor{black}{\textsc{MOOSE}}
-                    the Multiscale Object Oriented Simulation
-                    Environment, to model plasticity and brain computation across scales.}
-
-        \end{itemize}
-        \vspace{-1cm}
+    \TEXT{Memory and plasticity involve brain mechanisms from molecular scale to
+        enormous networks.}
+        \vspace{0cm}
         \begin{tikzpicture}
         \node[] (text) {
             \begin{minipage}{0.3\textwidth}
@@ -222,14 +214,62 @@
             \includegraphics[width=5cm]{images/chromosome.png}
         };
     \end{tikzpicture} 
+ 
+    \vspace{1cm}
+    \TEXT{We have developed \textcolor{black}{\textsc{MOOSE}} the Multiscale
+        Object Oriented Simulation Environment, to model plasticity and brain
+        computation across scales.}
 
 
-    \end{Figure}
+    \TEXT{\bf Modular solvers available in MOOSE}
+    \def\figwidth{0.15\textwidth}
+    \def\captionwidth{0.2\textwidth}
+    \begin{tikzpicture}
+        \node[] (stochastic) {
+            \includegraphics[width=\figwidth]{./images/stochastic_solver.png}
+        }; 
+        \node[text width=\captionwidth] at ([yshift=-1cm]stochastic.south)
+            {\CAPTION{Reaction at single molecule level}
+            };
+        \end{tikzpicture} \hfill %
+        \begin{tikzpicture}
+            \node[] (ksolve) { %at ([xshift=4cm]stochastic.east) {
+                \includegraphics[width=\figwidth]{./images/ksolve_dsolve.png}
+            };
+            \node[text width=\captionwidth] at ([yshift=-1cm]ksolve.south) {\CAPTION{Reaction Diffusion Solver}};
+        \end{tikzpicture} \hfill %
+        \begin{tikzpicture}
+            \node[] (hsolve) { % at ([xshift=4cm]ksolve.east) {
+                \includegraphics[width=\figwidth]{./images/hsolve.png}
+            };
+            \node[text width=\captionwidth] at ([yshift=-1cm]hsolve.south) {\CAPTION{Electrical: Hines Solver}};
+        \end{tikzpicture}
 
+%        \edef\figwidth{0.27\textwidth}
+        %\begin{tikzpicture}
+            %\node[] (signalling)  {
+                %\includegraphics[width=\figwidth]{./images/poster_editView.png}
+            %};
+            %\node [text width=\captionwidth, below=2.7cm] (captionC)  {\CAPTION{Signalling Model}};
+        %\end{tikzpicture}%
+        %\begin{tikzpicture}
+            %\node [] (moose_cell) {
+                %\includegraphics[width=\figwidth]{./images/_1_7.jpeg}
+            %};
+            %\node [text width=\captionwidth,below=3.5cm] (captionA) {\CAPTION{Single Neuron Model}};
+        %\end{tikzpicture}%
+    %\begin{tikzpicture}
+        %\node[] (olfaction) {
+            %\includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}
+        %};
+        %\node [text width=\figwidth, below=2.7cm] (captionB) {\CAPTION{Olfactory
+                %bulb model}};
+%    \end{tikzpicture}
 
-    \HEADING{2. Multiscale Modelling in MOOSE}
+\HEADING{2. Some projects using MOOSE}
     \edef\figwidth{0.12\textwidth}
-    \vspace{-1cm}
+
+    \SECTION{2.1 Modelling Memory}
 
      \begin{tikzpicture}[
         spy using outlines={circle
@@ -319,62 +359,13 @@
              \draw[o-o] (s21.center) to [bend left] (tlabel) ;
 
          \end{scope}
-
-
      \end{tikzpicture} 
-   
-        %% Modular solvers available in MOOSE
-    \def\figwidth{0.15\textwidth}
-    \def\captionwidth{0.2\textwidth}
-    \begin{tikzpicture}
-        \node[] (stochastic) {
-            \includegraphics[width=\figwidth]{./images/stochastic_solver.png}
-        }; 
-        \node[text width=\captionwidth] at ([yshift=-1cm]stochastic.south)
-            {\CAPTION{Reaction at single molecule level}
-            };
-        \end{tikzpicture} \hfill %
-        \begin{tikzpicture}
-            \node[] (ksolve) { %at ([xshift=4cm]stochastic.east) {
-                \includegraphics[width=\figwidth]{./images/ksolve_dsolve.png}
-            };
-            \node[text width=\captionwidth] at ([yshift=-1cm]ksolve.south) {\CAPTION{Reaction Diffusion Solver}};
-        \end{tikzpicture} \hfill %
-        \begin{tikzpicture}
-            \node[] (hsolve) { % at ([xshift=4cm]ksolve.east) {
-                \includegraphics[width=\figwidth]{./images/hsolve.png}
-            };
-            \node[text width=\captionwidth] at ([yshift=-1cm]hsolve.south) {\CAPTION{Electrical: Hines Solver}};
-        \end{tikzpicture}
-
-        \edef\figwidth{0.27\textwidth}
-        \begin{tikzpicture}
-            \node[] (signalling)  {
-                \includegraphics[width=\figwidth]{./images/poster_editView.png}
-            };
-            \node [text width=\captionwidth, below=2.7cm] (captionC)  {\CAPTION{Signalling Model}};
-        \end{tikzpicture}%
-        \begin{tikzpicture}
-            \node [] (moose_cell) {
-                \includegraphics[width=\figwidth]{./images/_1_7.jpeg}
-            };
-            \node [text width=\captionwidth,below=3.5cm] (captionA) {\CAPTION{Single Neuron Model}};
-        \end{tikzpicture}%
-    \begin{tikzpicture}
-        \node[] (olfaction) {
-            \includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}
-        };
-        \node [text width=\figwidth, below=2.7cm] (captionB) {\CAPTION{Olfactory
-                bulb model}};
-    \end{tikzpicture}
-
 \end{Figure}
 
-\columnbreak
-\HEADING{3. Some projects using MOOSE}
+%% column2 starts here
+\edef\figwidth{0.95\textwidth}
 \begin{Figure}
-    \edef\figwidth{0.95\textwidth}
-    \SECTION{3.1 Olfactory bulb project}
+    \SECTION{2.2 Modelling Olfactory Bulb}
     \TEXT{ Network coding and computation in olfaction and somatosensory
         cortex. It explains linear coding and phase-decorrelation and
         predicts connectivity, lateral dendrite output structure.}
@@ -392,7 +383,7 @@
     \end{tikzpicture}
 
     %% One more model here.
-    \SECTION{3.2 Signalling Pathways}
+    \SECTION{2.3 Modelling Signalling Pathways}
     \begin{tikzpicture}
         \node[] (robust) {
             \includegraphics[width=0.6\textwidth]{./images/chemical_model.png}
@@ -404,7 +395,7 @@
         };
     \end{tikzpicture}
 
-    %\SECTION{3.3 Single column Thalamacortical Model}
+    %\SECTION{2.3 Single column Thalamacortical Model}
 
     %\begin{tikzpicture}
         %\node [fill=yellow!20] (subha) {
@@ -428,7 +419,7 @@
 %% Column 3
 \begin{Figure}
     
-    \SECTION{3.3 Robustness of Chemical Switches}
+    \SECTION{2.4 Robustness of Chemical Switches}
 
    \begin{tikzpicture}
         \node [] (model) {

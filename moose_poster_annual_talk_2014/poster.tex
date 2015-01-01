@@ -33,14 +33,14 @@
 \newcommand{\HEADING}[1]
 {
     %\includegraphics[scale=0.35]{./images/heading.png}
-    \MOOSELOGO
-    \fontsize{2.5cm}{1cm}\selectfont \textcolor{red}{#1}
+    %\MOOSELOGO
+    \fontsize{2.2cm}{1cm}\selectfont \textcolor{black}{#1}
     \vspace{0.5cm}
 }
 
 \newcommand{\SECTION}[1]
 {
-    {\fontsize{1.8cm}{1.5cm}\selectfont \textsc{\textcolor{blue}{#1}}\par}
+    {\fontsize{1.75cm}{1.5cm}\selectfont \textsc{\textcolor{black}{#1}}\par}
 }
 
 \newcommand{\CAPTION}[1]
@@ -50,7 +50,7 @@
 
 \newcommand{\TEXT}[1]
 {
-   { \fontsize{1.2cm}{1.2cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
+   { \fontsize{1.5cm}{1.2cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
 }
 
 \newcommand{\ITEM}[1]
@@ -58,7 +58,7 @@
     {\fontsize{1.2cm}{1.2cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
 }
 
-\newcommand{\MOOSE}[0]{\textsc{\textcolor{red}{MOOSE}}}
+\newcommand{\MOOSE}[0]{\textsc{\textcolor{black}{MOOSE}}}
 
 \newcommand{\MOOSELOGO}[0]{
     \tikz \node[inner sep=1mm] {\includegraphics[scale=0.6]{./images/moose_logo_tiny.png}}; 
@@ -92,7 +92,7 @@
     };
 
     \node [] (title) at ([xshift=40cm]logo.east) {
-        \fontsize{4cm}{1em}\selectfont \textcolor{red}{Modelling Memory Across
+        \fontsize{4cm}{1em}\selectfont \textcolor{black}{Modelling Memory Across
             Scales}
     };
 
@@ -113,7 +113,7 @@
     
 %%%%%%%%%%%% Column 1
 \begin{Figure}
-    \HEADING{Why Multiscale?}
+    \HEADING{1. Why Multiscale?}
 
     \begin{Figure}
         %\input{tex/multiscale.tikz}
@@ -122,7 +122,7 @@
             \item \TEXT{Memory and plasticity involve brain mechanisms from molecular scale
                     to enormous networks.}
 
-            \item \TEXT{We have developed \textcolor{red}{\textsc{MOOSE}}
+            \item \TEXT{We have developed \textcolor{black}{\textsc{MOOSE}}
                     the Multiscale Object Oriented Simulation
                     Environment, to model plasticity across scales.}
 
@@ -222,10 +222,23 @@
     \end{Figure}
 
 
-    \HEADING{Multiscale Modeling in MOOSE}
-    %% Modular solvers available in MOOSE
+    \HEADING{2. Multiscale Modeling in MOOSE}
     \edef\figwidth{0.12\textwidth}
-    
+   
+    \begin{tikzpicture}
+        \node[] (text) {
+            \begin{minipage}{0.3\textwidth}
+                \begin{itemize}
+                    \item \CAPTION{$10^{11}$ cells, $10^{15}$ synapses, $10000$?
+                            reactions per synapse}
+                    \item \CAPTION{Electrical events: $< 1$ ms,  Chemical events: $1\;
+                        \text{sec} \rightarrow 1000\; \text{sec}$}
+                    \item \CAPTION{Structural events: $100\; \text{sec}
+                        \rightarrow \text{months}$}
+                \end{itemize}
+            \end{minipage}
+        };
+    \end{tikzpicture} \hfill%
     \begin{tikzpicture}[
         image/.style = {xslant=0.0,yslant=0.0}
         ]
@@ -302,35 +315,32 @@
         \node[] (chromosome) at (12.0,5) {
             \includegraphics[width=5cm]{images/chromosome.png}
         };
+    \end{tikzpicture} 
 
-        \node[] (text) at ([xshift=5cm,yshift=4cm]electrical.east) {
-            \begin{minipage}{0.3\textwidth}
-                \LARGE\bf
-                \begin{itemize}
-                    \item $10^{11}$ cells, $10^{15}$ synapses, $10000$? reactions per synapse
-                    \item Electrical events: $< 1$ ms,  Chemical events: $1\;
-                        \text{sec} \rightarrow 1000\; \text{sec}$
-                \item Structural events: $100\; \text{sec} \rightarrow \text{months}$
-        \end{itemize}
-    \end{minipage}
-};
-    \end{tikzpicture} %
+    %% Modular solvers available in MOOSE
+    \def\figwidth{0.15\textwidth}
+    \def\captionwidth{0.2\textwidth}
     \begin{tikzpicture}
         \node[] (stochastic) {
             \includegraphics[width=\figwidth]{./images/stochastic_solver.png}
         }; 
-        \node[text width=1.5*\figwidth] at ([xshift=2.5cm]stochastic.east)
-        {\CAPTION{Reaction at single molecule level}};
-        \node[] (ksolve) at ([yshift=-2cm]stochastic.south) {
+        \node[text width=\captionwidth] at ([yshift=-1cm]stochastic.south)
+            {\CAPTION{Reaction at single molecule level}
+            };
+    \end{tikzpicture} \hfill %
+    \begin{tikzpicture}
+        \node[] (ksolve) { %at ([xshift=4cm]stochastic.east) {
             \includegraphics[width=\figwidth]{./images/ksolve_dsolve.png}
         };
-        \node[text width=1.5*\figwidth] at ([xshift=2.5cm]ksolve.east) {\CAPTION{Reaction Diffusion Solver}};
-        \node[] (hsolve) at ([yshift=-2cm]ksolve.south) {
+        \node[text width=\captionwidth] at ([yshift=-1cm]ksolve.south) {\CAPTION{Reaction Diffusion Solver}};
+    \end{tikzpicture} \hfill %
+    \begin{tikzpicture}
+        \node[] (hsolve) { % at ([xshift=4cm]ksolve.east) {
             \includegraphics[width=\figwidth]{./images/hsolve.png}
         };
-        \node[text width=1.5*\figwidth] at ([xshift=2.5cm]hsolve.east)
-        {\CAPTION{Electrical: Hines Solver}};
+        \node[text width=\captionwidth] at ([yshift=-1cm]hsolve.south) {\CAPTION{Electrical: Hines Solver}};
     \end{tikzpicture}
+
     \end{Figure}
 
     \begin{Figure}
@@ -360,9 +370,10 @@
 \vfill
 \columnbreak
 
-\HEADING{Some projects using MOOSE}
+\HEADING{3. Some projects using MOOSE}
 \begin{Figure}
     \edef\figwidth{0.95\textwidth}
+    \SECTION{3.1 Olfactory bulb project}
     \TEXT{ Network coding and computation in olfaction and somatosensory
         cortex. It explains linear coding and phase-decorrelation and
         predicts connectivity, lateral dendrite output structure.}
@@ -374,7 +385,15 @@
     \end{tikzpicture}
     %% One more model here.
 
-    \TEXT{TODO: text here}
+    \SECTION{3.2 Single column Thalamacortical Model}
+
+    \begin{tikzpicture}
+        \node [] (subha) {
+            \includegraphics[width=0.5\textwidth]{./images/connectivity_cell_types.png}
+        };
+    \end{tikzpicture}
+
+    \SECTION{3.3 TODO: text herei}
     \begin{tikzpicture}
         \node[] (robust) {
             \includegraphics[width=0.6\textwidth]{./images/chemical_model.png}
@@ -391,7 +410,7 @@
 %% Column 3
 \begin{Figure}
     
-    \HEADING{Robustness of Chemical Switches}
+    \SECTION{3.3 Robustness of Chemical Switches}
 
     \begin{tikzpicture}
         \node [] (timeline) {
@@ -422,7 +441,8 @@
 
 
 
-    \HEADING{Summary}
+    \HEADING{4. Summary}
+
     \TEXT{\bf We use models to,}
     \begin{itemize}
         \item \TEXT{Integrate many scales of neuronal data with basic
@@ -434,8 +454,6 @@
             \emph{memory decay}.}
 
     \end{itemize}
-
-    \TEXT{\bf We have developed MOOSE to carry out these simulations.}
 
 \end{Figure}
 

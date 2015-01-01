@@ -244,7 +244,6 @@
     \vspace{2cm}
 
 \HEADING{2. Some projects using MOOSE}
-
     \edef\figwidth{0.2\textwidth}
     \begin{tikzpicture}
         \node[] (signalling) {
@@ -267,6 +266,11 @@
     \begin{tikzpicture}
         \node[] (projectb) {
             \includegraphics[height=0.15\textwidth]{./images/thalamocortical.png}
+        };
+    \end{tikzpicture}%
+    \begin{tikzpicture}
+        \node [] (subha) {
+            \includegraphics[width=0.15\textwidth]{./images/reduced_model_pyramidical_cells.png}
         };
     \end{tikzpicture}
 
@@ -417,7 +421,20 @@
 %% Column 3
 \begin{Figure}
     
-    \SECTION{2.4 Robustness of Chemical Switches}
+    \SECTION{2.4 Modelling Chemical Signalling Pathways}
+
+    \begin{tikzpicture}
+        \node []  {
+            \includegraphics[width=0.6\textwidth]{./images/chemical_model.png}
+        };
+    \end{tikzpicture}%
+    \begin{tikzpicture}
+        \node [] (harsha) {
+            \includegraphics[width=0.4\textwidth]{./images/run_view_result.png}
+        };
+    \end{tikzpicture}
+
+    \SECTION{2.5 Robustness of Chemical Switches}
 
    \begin{tikzpicture}
         \node [] (model) {
@@ -447,19 +464,19 @@
 
     \end{tikzpicture}
 
-    
     \begin{tikzpicture}
         \node[] (ktseries) {
-            \includegraphics[width=0.8\textwidth]{./images/KT_statistic_crop.png}
+            \includegraphics[width=0.5\textwidth]{./images/KT_statistic_crop.png}
         };
 
     \end{tikzpicture}
 
 
-    \HEADING{4. Summary}
+    \HEADING{3. Summary}
 
     \TEXT{\bf We use models to,}
     \begin{itemize}
+
         \item \TEXT{Integrate many scales of neuronal data with basic
             physical/chemical principles.}
         \item \TEXT{Explain phenomena of plasticity, activity and neuronal

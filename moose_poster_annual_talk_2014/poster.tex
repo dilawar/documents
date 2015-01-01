@@ -40,7 +40,7 @@
 
 \newcommand{\SECTION}[1]
 {
-    {\fontsize{1.75cm}{1.5cm}\selectfont \textsc{\textcolor{black}{#1}}\par}
+    {\fontsize{1.75cm}{1.5cm}\selectfont \textsc{\textcolor{blue}{#1}}\par}
 }
 
 \newcommand{\CAPTION}[1]
@@ -238,7 +238,7 @@
                 \end{itemize}
             \end{minipage}
         };
-    \end{tikzpicture} \hfill%
+    \end{tikzpicture} %
     \begin{tikzpicture}[
         image/.style = {xslant=0.0,yslant=0.0}
         ]
@@ -327,49 +327,44 @@
         \node[text width=\captionwidth] at ([yshift=-1cm]stochastic.south)
             {\CAPTION{Reaction at single molecule level}
             };
-    \end{tikzpicture} \hfill %
-    \begin{tikzpicture}
-        \node[] (ksolve) { %at ([xshift=4cm]stochastic.east) {
-            \includegraphics[width=\figwidth]{./images/ksolve_dsolve.png}
-        };
-        \node[text width=\captionwidth] at ([yshift=-1cm]ksolve.south) {\CAPTION{Reaction Diffusion Solver}};
-    \end{tikzpicture} \hfill %
-    \begin{tikzpicture}
-        \node[] (hsolve) { % at ([xshift=4cm]ksolve.east) {
-            \includegraphics[width=\figwidth]{./images/hsolve.png}
-        };
-        \node[text width=\captionwidth] at ([yshift=-1cm]hsolve.south) {\CAPTION{Electrical: Hines Solver}};
-    \end{tikzpicture}
+        \end{tikzpicture} \hfill %
+        \begin{tikzpicture}
+            \node[] (ksolve) { %at ([xshift=4cm]stochastic.east) {
+                \includegraphics[width=\figwidth]{./images/ksolve_dsolve.png}
+            };
+            \node[text width=\captionwidth] at ([yshift=-1cm]ksolve.south) {\CAPTION{Reaction Diffusion Solver}};
+        \end{tikzpicture} \hfill %
+        \begin{tikzpicture}
+            \node[] (hsolve) { % at ([xshift=4cm]ksolve.east) {
+                \includegraphics[width=\figwidth]{./images/hsolve.png}
+            };
+            \node[text width=\captionwidth] at ([yshift=-1cm]hsolve.south) {\CAPTION{Electrical: Hines Solver}};
+        \end{tikzpicture}
 
-    \end{Figure}
-
-    \begin{Figure}
-        \edef\figwidth{0.3\textwidth}
+        \edef\figwidth{0.27\textwidth}
         \begin{tikzpicture}
             \node[] (signalling)  {
                 \includegraphics[width=\figwidth]{./images/poster_editView.png}
             };
             \node [text width=\figwidth, below=2.7cm] (captionC)  {\CAPTION{Signalling Model}};
         \end{tikzpicture}%
-        \hfill
         \begin{tikzpicture}
             \node [] (moose_cell) {
                 \includegraphics[width=\figwidth]{./images/_1_7.jpeg}
             };
             \node [text width=\figwidth,below=3.5cm] (captionA) {\CAPTION{Single Neuron Model}};
         \end{tikzpicture}%
-        \hfill
-        \begin{tikzpicture}
-            \node[] (olfaction) {
-                \includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}
-            };
-            \node [text width=\figwidth, below=2.7cm] (captionB) {\CAPTION{Olfactory
-                    bulb model}};
-        \end{tikzpicture}
-\end{Figure}
-\vfill
-\columnbreak
+    \begin{tikzpicture}
+        \node[] (olfaction) {
+            \includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}
+        };
+        \node [text width=\figwidth, below=2.7cm] (captionB) {\CAPTION{Olfactory
+                bulb model}};
+    \end{tikzpicture}
 
+\end{Figure}
+
+\columnbreak
 \HEADING{3. Some projects using MOOSE}
 \begin{Figure}
     \edef\figwidth{0.95\textwidth}
@@ -385,15 +380,15 @@
     \end{tikzpicture}
     %% One more model here.
 
-    \SECTION{3.2 Single column Thalamacortical Model}
+    %\SECTION{3.2 Single column Thalamacortical Model}
 
-    \begin{tikzpicture}
-        \node [] (subha) {
-            \includegraphics[width=0.5\textwidth]{./images/connectivity_cell_types.png}
-        };
-    \end{tikzpicture}
+%    \begin{tikzpicture}
+        %\node [] (subha) {
+            %\includegraphics[width=0.5\textwidth]{./images/connectivity_cell_types.png}
+        %};
+    %\end{tikzpicture}
 
-    \SECTION{3.3 TODO: text herei}
+    \SECTION{3.2 Signalling Pathways}
     \begin{tikzpicture}
         \node[] (robust) {
             \includegraphics[width=0.6\textwidth]{./images/chemical_model.png}

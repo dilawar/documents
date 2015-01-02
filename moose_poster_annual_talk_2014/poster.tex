@@ -295,12 +295,12 @@
          \foreach \i in {-3,...,3}
          \foreach \j in {-3,...,3}
          {
-             \node[fill=blue!40,opacity=0.3,thin,inner sep=0pt, minimum size=3mm,circle] (n\i\j) at (\i, \j) {};
+             \node[fill=blue,opacity=0.3,thin,inner sep=0pt, minimum size=3mm,circle] (n\i\j) at (\i, \j) {};
          };
 
          \spy[blue, size=3cm] on (1.65, -1.5) in node[left] at (7,3);
-         \node[below=4cm,text width=0.3\textwidth] {\CAPTION{A single neuron is
-                 embedded in a lattice of a neural network}};
+         \node[below=4cm,text width=0.3\textwidth] {\CAPTION{A single detailed neuron is
+                 embedded in a network of simple cells}};
 
          %% Cool. Now create a 3d compartment model here.
          \begin{scope}[xshift=11cm, yshift=3cm
@@ -349,7 +349,7 @@
          %% Scope to draw chemisty 
          \begin{scope}
 
-             \node[] (chemical) at ([yshift=-5.5cm]c2.south) {
+             \node[] (chemical) at ([yshift=-6cm]c2.south) {
                  \includegraphics[width=0.35\textwidth, trim=5mm 5mm 5mm 5mm, clip]{./images/chemical_reactions.png}
              };
 
@@ -364,63 +364,92 @@
                  \includegraphics[width=0.3\textwidth]{./images/transport_mechanism.png}
              };
 
-             \node[] (tlabel) at ([xshift=0.5cm, yshift=-1cm]transport.north) {\LARGE{Trafficking
+             \node[] (tlabel) at ([xshift=0.5cm, yshift=0cm]transport.north) {\LARGE{Trafficking
                      models}};
 
              \draw[o-o] (s21.center) to [bend left] (tlabel) ;
 
          \end{scope}
-     \end{tikzpicture} 
+     \end{tikzpicture}
+     \begin{tikzpicture}
+         \node[] (label) at ([xshift=-20cm]tlabel) {
+             \CAPTION{\hspace{15cm} Neighbouring spines are modified differently}
+         };
+     \end{tikzpicture}
 
      %% memory results by upi
+    \begin{tikzpicture}
+         \node[] (resultb) {
+             \includegraphics[width=0.4\textwidth]{./images/spike_raster.png}
+         };
+     \end{tikzpicture} \hfill %
      \begin{tikzpicture}
          \node[] (resultA) {
              \includegraphics[width=0.45\textwidth]{./images/timeseries.png}
          };
      \end{tikzpicture}
-     \begin{tikzpicture}
-         \node[] (resultb) {
-             \includegraphics[width=0.45\textwidth]{./images/spike_raster.png}
-         };
-     \end{tikzpicture}
-
+ 
 
 \end{Figure}
 
 %% column2 starts here
 \edef\figwidth{0.95\textwidth}
 \begin{Figure}
+
     \SECTION{2.2 Modelling Olfactory Bulb}
+    \centering
     \begin{tikzpicture}
         \node[] (aditya) {
-            \includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}
+            \includegraphics[width=0.9\textwidth]{./images/fullmodel_moogli.png}
         };
     \end{tikzpicture}
     \vspace{1cm}
 
     \begin{tikzpicture}
         \node[] (caption) {
-            \begin{minipage}{0.35\textwidth}
+            \begin{minipage}{0.5\textwidth}
                 \TEXT{
-                    Network coding and computation in olfaction and somatosensory
-                    cortex. It explains linear coding and phase-decorrelation and
+                     The bulb model explains linear coding and phase-decorrelation and
                     predicts connectivity, lateral dendrite output structure.} 
             \end{minipage}
         };
     \end{tikzpicture} \hfill%
     \begin{tikzpicture}
         \node[] (result) {
-            \includegraphics[width=0.6\textwidth]{./images/aditya_work.png}
+            \includegraphics[width=0.45\textwidth]{./images/aditya_work.png}
         };
     \end{tikzpicture}
 
     %% One more model here.
+    \raggedright
     \SECTION{2.3 Modelling Cortex}
+
+    \TEXT{\bf Predicts:}
+
+    \centering
+    \begin{tikzpicture}
+        \node [] (label) {
+            \begin{minipage}{\textwidth}
+                \TEXT{1. Excitatory-Inhibitory balance needed to avoid strongly oscillatory
+                    behaviour}
+            \end{minipage}
+        };
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \node [] (label) {
+            \begin{minipage}{\textwidth}
+                \TEXT{2. Many weakly connected basket cells better at suppressing
+                    oscillations}
+            \end{minipage}
+        };
+    \end{tikzpicture}
+
+    \vspace{-1cm}
     \begin{tikzpicture}
         \node[] (robust) {
-            \includegraphics[width=\textwidth]{./images/subha.png}
+            \includegraphics[width=0.9\textwidth]{./images/subha.png}
         };
-    \end{tikzpicture}%
+    \end{tikzpicture}
 
 \end{Figure}
 
@@ -441,6 +470,8 @@
     \end{tikzpicture}
 
     \SECTION{2.5 Robustness of Chemical Switches}
+
+    \TEXT{\bf Does parameter robustness imply noise robustness?}
 
    \begin{tikzpicture}
         \node [] (model) {
@@ -483,7 +514,7 @@
 
     \HEADING{3. Summary}
 
-    \TEXT{\bf We use models to,}
+    \TEXT{\bf We use models to:}
     \begin{itemize}
 
         \item \TEXT{Integrate many scales of neuronal data with basic

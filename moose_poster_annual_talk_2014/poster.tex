@@ -34,16 +34,19 @@
 % This macro creates header.
 \newcommand{\HEADING}[1]
 {
-    %\includegraphics[scale=0.35]{./images/heading.png}
-    %\MOOSELOGO
-    \fontsize{2cm}{1cm}\selectfont \textcolor{black}{#1}
-    \vspace{0.5cm}
+    \tikz \path[] node {\includegraphics[scale=0.3]{./images/heading.png}}
+        node [right] {\fontsize{2cm}{1cm}\selectfont
+            \textcolor{black}{\hspace{1cm}#1}
+        };
 }
 
 \newcommand{\SECTION}[1]
 {
-    {\fontsize{1.5cm}{1.5cm}\selectfont \textsc{\textcolor{blue}{#1}}\par}
-    \vspace{0.5cm}
+    \tikz \path[] node {\includegraphics[scale=0.2]{./images/heading.png}}
+        node [right] {\fontsize{1.5cm}{1cm}\selectfont
+            \textcolor{blue}{\hspace{1cm}#1}
+        };
+
 }
 
 \newcommand{\CAPTION}[1]
@@ -100,8 +103,8 @@
     };
 
     \node[] (authors) at ([yshift=-1cm]title.south) {
-        \fontsize{1.5cm}{1em}\selectfont Subhasis Ray, Harsha Rani, Sahil Moza,
-        Aditya Gilra,  Aviral Goel, Dilawar Singh, Upinder Bhalla
+        \fontsize{1.5cm}{1em}\selectfont Subhasis Ray, Harsha Rani, Aditya
+        Gilra,  Sahil Moza, Aviral Goel, Dilawar Singh, Upinder Bhalla
     };
 
     \node [] (mooselogo) at ([xshift=15cm,yshift=0cm]title.east) {
@@ -127,7 +130,7 @@
             \item \TEXT{Memory and plasticity involve brain mechanisms from molecular scale to
                     enormous networks.}
 
-            \item \TEXT{We have developed \textcolor{black}{\textsc{MOOSE}} the Multiscale
+            \item \TEXT{We have developed \textcolor{black}{\textsc{MOOSE}}: the Multiscale
                     Object Oriented Simulation Environment, to model plasticity and brain
                     computation across scales.}
         \end{itemize}
@@ -149,8 +152,8 @@
         \coordinate (timeends) at (1+11*\timeScaleFactor, 0);
 
 
-        \draw[-fast cap, yellow!50, line width=4ex]  (timeRoot) to[] (timeends);
-        \draw[-fast cap, yellow!50, line width=4ex]  (sizeRoot) to[] (sizeends);
+        \draw[-fast cap, yellow!100, line width=4ex]  (timeRoot) to[] (timeends);
+        \draw[-fast cap, yellow!100, line width=4ex]  (sizeRoot) to[] (sizeends);
 
 
         \node[] (nm) at (0,1) {$nm$};
@@ -189,15 +192,15 @@
 
 
         \node[rectangle, minimum width=12cm, minimum height=6.0cm,
-            draw, rounded corners] (chemical) at (10.0,4.5) {};
+        rounded corners, opacity=0.3, fill=blue!50] (chemical) at (10.0,4.5) {};
 
-        \node[] (caption) at ([yshift=-1cm]chemical.north) {\LARGE Chemical};
+        \node[] (caption) at ([yshift=-1cm]chemical.north) {\LARGE CHEMICAL};
 
-        \node[rectangle, minimum width=3cm, minimum height=4.5cm
-            , draw, rounded corners
-            ] (electrical) at (3.5, 9.0) {};
+        \node[rectangle, minimum width=4.5cm, minimum height=5cm
+        , opacity=0.5, fill=green!50, rounded corners
+            ] (electrical) at (3.8, 8.5) {};
 
-        \node[] at (electrical.center) {\LARGE Electrical};
+        \node[] at (electrical.center) {\LARGE ELECTRICAL};
 
 
         % Put chemical network here

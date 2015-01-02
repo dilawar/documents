@@ -110,8 +110,8 @@
     \node [] (mooselogo) at ([xshift=15cm,yshift=0cm]title.east) {
         \includegraphics[height=6cm]{./images/moose_logo_tiny.png}
     };
-    \node [] (gpl) at ([xshift=23cm,yshift=-2cm]title.east) {
-        \includegraphics[height=3cm,width=8cm]{./images/gplv3.png}
+    \node [] (gpl) at ([xshift=16cm,yshift=-3cm]title.east) {
+        \TEXT{\textsc{An Open-Source Project}}
     };
 \end{tikzpicture}
 
@@ -456,20 +456,7 @@
 %% Column 3
 \begin{Figure}
     
-    \SECTION{2.4 Modelling Chemical Signalling Pathways}
-
-    \begin{tikzpicture}
-        \node []  {
-            \includegraphics[width=0.6\textwidth]{./images/chemical_model.png}
-        };
-    \end{tikzpicture}%
-    \begin{tikzpicture}
-        \node [] (harsha) {
-            \includegraphics[width=0.4\textwidth]{./images/run_view_result.png}
-        };
-    \end{tikzpicture}
-
-    \SECTION{2.5 Robustness of Chemical Switches}
+    \SECTION{2.4 Robustness of Chemical Switches}
 
     \TEXT{\bf Does parameter robustness imply noise robustness?}
 
@@ -513,8 +500,23 @@
         };
     \end{tikzpicture}
 
-    \HEADING{3. Summary}
+    \vspace{1cm}
+   \SECTION{2.5 GUI for Chemical and Electrical Models}
 
+        \begin{tikzpicture}[ image/.style={xslant=0.5, yslant=0.0} ]
+            \node []  {
+                \includegraphics[width=0.5\textwidth]{./images/poster_runView.png}
+            };
+        \end{tikzpicture}%
+        \begin{tikzpicture}
+            \node [] (harsha) {
+                \includegraphics[width=0.5\textwidth]{./images/moose_interface_electrical.png}
+            };
+        \end{tikzpicture}
+
+
+    \vspace{1cm}
+    \HEADING{3. Summary}
     \TEXT{\bf We use models to:}
     \begin{itemize}
 
@@ -523,11 +525,12 @@
         \item \TEXT{Explain phenomena of plasticity, activity and neuronal
                 coding.}
         \item \TEXT{Predict circuit mechanisms, plasticity rules, and emergent
-            phenomena such as \emph{decorrelation}, \emph{robustness}, and
-            \emph{memory decay}.}
+            phenomena such as {decorrelation}, {robustness}, and
+            {memory decay}.}
 
     \end{itemize}
 
+ 
 \end{Figure}
 
 \end{multicols}

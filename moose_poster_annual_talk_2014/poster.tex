@@ -1,5 +1,5 @@
-\documentclass[a0paper,12pt]{article}
-\usepackage[landscape,top=5cm,bottom=3cm,right=5cm,left=5cm]{geometry}
+\documentclass[12pt]{article}
+\usepackage[paperwidth=36in, paperheight=48in,landscape,top=5cm,bottom=3cm,right=5cm,left=5cm]{geometry}
 \usepackage{graphicx}
 \usepackage{standalone}
 \usepackage{amsmath}
@@ -35,28 +35,30 @@
 \newcommand{\HEADING}[1]
 {
     \tikz \path[] node {\includegraphics[scale=0.3]{./images/heading.png}}
-        node [right] {\fontsize{2cm}{1cm}\selectfont
+        node [right] {\fontsize{2.5cm}{1cm}\selectfont
             \textcolor{black}{\hspace{1cm}#1}
         };
+    \\
 }
 
 \newcommand{\SECTION}[1]
 {
+    \vspace{1cm}
     \tikz \path[] node {\includegraphics[scale=0.2]{./images/heading.png}}
-        node [right] {\fontsize{1.5cm}{1cm}\selectfont
+        node [right] {\fontsize{1.8cm}{1cm}\selectfont
             \textcolor{blue}{\hspace{1cm}#1}
         };
-
+        \par
 }
 
 \newcommand{\CAPTION}[1]
 {
-    {\fontsize{1cm}{1cm}\fontfamily{\sfdefault}\selectfont {\textcolor{black}{#1}}\par}
+    {\fontsize{1.2cm}{1cm}\fontfamily{\sfdefault}\selectfont {\textcolor{black}{#1}}\par}
 }
 
 \newcommand{\TEXT}[1]
 {
-   { \fontsize{1.2cm}{1.0cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
+   { \fontsize{1.4cm}{1.0cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
 }
 
 \newcommand{\ITEM}[1]
@@ -248,7 +250,7 @@
     \vspace{2cm}
 
 \HEADING{2. Some projects using MOOSE}
-    \edef\figwidth{0.2\textwidth}
+    \edef\figwidth{0.24\textwidth}
     \begin{tikzpicture}
         \node[] (signalling) {
             \includegraphics[width=\figwidth]{./images/poster_editView.png}
@@ -260,18 +262,18 @@
             \includegraphics[width=\figwidth]{./images/_1_7.jpeg}
         };
         %\node [text width=\figwidth,below=3.5cm] (captionA) {\CAPTION{Single Neuron Model}};
-    \end{tikzpicture}%
+    \end{tikzpicture} \hfill%
     \begin{tikzpicture}
         \node[] (olfaction) {
             \includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}
         };
         %\node [text width=\figwidth, below=2.7cm] (captionB) {\CAPTION{Olfactory bulb model}};
-    \end{tikzpicture}%
+    \end{tikzpicture} \hfill%
     \begin{tikzpicture}
         \node[] (projectb) {
             \includegraphics[height=0.15\textwidth]{./images/thalamocortical.png}
         };
-    \end{tikzpicture}%
+    \end{tikzpicture} \hfill%
     \begin{tikzpicture}
         \node [] (subha) {
             \includegraphics[width=0.15\textwidth]{./images/reduced_model_pyramidical_cells.png}
@@ -369,21 +371,24 @@
 
          \end{scope}
      \end{tikzpicture}
+
+
+     \vspace{1cm}
      \begin{tikzpicture}
          \node[] (label) at ([xshift=-20cm]tlabel) {
-             \CAPTION{\hspace{15cm} Neighbouring spines are modified differently}
+             \CAPTION{\hspace{12cm} Neighbouring spines are modified differently}
          };
      \end{tikzpicture}
 
      %% memory results by upi
     \begin{tikzpicture}
          \node[] (resultb) {
-             \includegraphics[width=0.4\textwidth]{./images/spike_raster.png}
+             \includegraphics[width=0.5\textwidth]{./images/spike_raster.png}
          };
      \end{tikzpicture} \hfill %
      \begin{tikzpicture}
          \node[] (resultA) {
-             \includegraphics[width=0.45\textwidth]{./images/timeseries.png}
+             \includegraphics[width=0.5\textwidth]{./images/timeseries.png}
          };
      \end{tikzpicture}
  
@@ -398,7 +403,7 @@
     \centering
     \begin{tikzpicture}
         \node[] (aditya) {
-            \includegraphics[width=0.9\textwidth]{./images/fullmodel_moogli.png}
+            \includegraphics[width=\textwidth]{./images/fullmodel_moogli.png}
         };
     \end{tikzpicture}
     \vspace{1cm}

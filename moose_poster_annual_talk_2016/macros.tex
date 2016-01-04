@@ -1,0 +1,63 @@
+% This macro creates header.
+\newcommand{\HEADING}[1]
+{
+    \tikz \path[] 
+        % node {\includegraphics[scale=0.3]{./images/heading.png}}
+        node [right] {\fontsize{2.5cm}{1cm}\selectfont
+            \textcolor{black}{\hspace{1cm}#1}
+        };
+    \\
+}
+
+\newcommand{\SECTION}[1]
+{
+    \vspace{0.5cm}
+    \tikz \path[] 
+        %node {\includegraphics[scale=0.2]{./images/heading.png}}
+        node [right] {\fontsize{1.8cm}{1cm}\selectfont
+            \textcolor{blue}{\hspace{1cm}#1}
+        };
+        \par
+}
+
+\newcommand{\CAPTION}[1]
+{
+    {\fontsize{1.2cm}{1cm}\fontfamily{\sfdefault}\selectfont {\textcolor{black}{#1}}\par}
+}
+
+\newcommand{\TEXT}[1]
+{
+   { \fontsize{1.4cm}{1.0cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
+}
+
+\newcommand{\ITEM}[1]
+{
+    {\fontsize{1cm}{1.0cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
+}
+
+\newcommand{\MOOSE}[0]{\textsc{\textcolor{black}{MOOSE}}}
+
+\newcommand{\MOOSELOGO}[0]{
+    \tikz \node[inner sep=1mm] {\includegraphics[scale=0.6]{./images/moose_logo_tiny.png}}; 
+}
+
+\renewcommand{\labelitemi}{{\Huge$\bullet$}}
+
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+\tikzset{
+  every overlay node/.style={
+    draw=black,fill=white,rounded corners,anchor=north west,
+  },
+}
+% Usage:
+% \tikzoverlay at (-1cm,-5cm) {content};
+% or
+% \tikzoverlay[text width=5cm] at (-1cm,-5cm) {content};
+\def\tikzoverlay{%
+   \tikz[baseline,overlay]\node[draw=white,every overlay node]
+}%
+
+

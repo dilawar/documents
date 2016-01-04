@@ -1,0 +1,87 @@
+\begin{tikzpicture}[]
+    \LARGE
+    \def\lengthScaleFactor{1.6}
+    \def\timeScaleFactor{1.6}
+
+    \newcommand\scaleNode[1]{
+        (0, #1*\timeScaleFactor)
+    }
+
+    \coordinate (sizeRoot) at (0, 1);
+    \coordinate (sizeends) at (0,-1+11*\lengthScaleFactor);
+    \coordinate (timeRoot) at (1,0);
+    \coordinate (timeends) at (1+11*\timeScaleFactor, 0);
+
+
+    \draw[-fast cap, blue!20!white, line width=6ex]  (timeRoot) to[] (timeends);
+    \draw[-fast cap, blue!20!white, line width=6ex]  (sizeRoot) to[] (sizeends);
+
+
+    \node[] (nm) at (0,1) {$10^{-9}m$};
+    \node[] (um) at (0,5) {$10^{-6}m$};
+    \node[] (mm) at (0,9) {$10^{-3}m$};
+    \node[] (m) at (0,13) {$10^{-0}m$};
+
+    \node[] (us) at (1.5,0) {$\mu$ sec};
+    \node[] (ms) at (4.5,0) {$m$ sec};
+    \node[] (s) at (7.5,0) {sec};
+    \node[] (hrs) at (10.5, 0) {hours};
+    \node[] (days) at (13.5, 0) {days};
+
+    %% Distance between images and y-axis.
+    \def\shifty{-3.0cm}
+
+    \node[] (n1) at ([xshift=\shifty,yshift=0cm]nm) {
+        \includegraphics[width=0.1\textwidth]{images/8tim_TIM_barrel.png}
+    };
+
+    \node[] (n2) at ([xshift=\shifty,yshift=0cm]um) {
+        \includegraphics[width=0.1\textwidth]{images/dendrite.png}
+    };
+
+    \node[] (n3) at ([xshift=\shifty,yshift=-1cm]mm) {
+        \includegraphics[width=0.1\textwidth]{images/GolgiStainedPyramidalCell.jpg}
+    };
+
+    \node[] (n4) at ([xshift=\shifty,yshift=1cm]mm) {
+        \includegraphics[width=0.1\textwidth]{images/HippocampalRegions.jpg}
+    };
+
+    \node[] (n5) at ([xshift=\shifty,yshift=-1.0cm]m) {
+        \includegraphics[width=0.1\textwidth]{images/brain.png}
+    };
+
+    \node[opacity=0.5, rectangle, minimum width=12cm, minimum height=7.0cm,
+    fill=blue!20, rounded corners] (chemical) at (9.0,4.5) {};
+
+    \node[] (caption) at ([yshift=-1cm]chemical.north) {\LARGE Chemical};
+
+    \node[opacity=0.5, rectangle, minimum width=4cm, minimum height=7cm, fill=red!20, rounded corners] 
+    (electrical) at (4.0, 11.0) {};
+
+    \node[] at (electrical.center) {\LARGE Electrical};
+
+
+    % Put chemical network here
+    \node[] (network) at (7.0,4.0) {
+        \includegraphics[width=5cm]{images/chemical_reactions.png}
+    };
+
+    \node[] (chromosome) at (11.0,6.0) {
+        \includegraphics[width=5cm]{images/chromosome.png}
+    };
+
+    \node[fill=red!1] (text) at ([xshift=5cm]electrical.east) {
+        \begin{minipage}{0.3\textwidth}
+            \large
+            \begin{itemize}
+                \item $10^{11}$ cells, $10^{15}$ synapses, $10000$? reactions per synapse
+                \item Electrical events: $< 1$ ms,  Chemical events: $1\;
+                    \text{sec} \rightarrow 1000\; \text{sec}$
+            \item Structural events: $100\; \text{sec} \rightarrow \text{months}$
+        \item Lifetime of a protein: days, a neuron: 100 years, a memory: 100 years
+    \end{itemize}
+\end{minipage}
+        };
+    \end{tikzpicture} %
+

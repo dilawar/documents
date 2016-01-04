@@ -1,0 +1,543 @@
+\documentclass[12pt]{article}
+\usepackage[paperwidth=36in, paperheight=48in,landscape,top=5cm,bottom=3cm,right=5cm,left=5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{standalone}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usepackage{tikzscale}
+\usepackage{enumitem}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{arrows.spaced}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{spy,calc}
+\usetikzlibrary{shapes.arrows}
+
+\usepackage{color}
+\usepackage{moresize}
+\usepackage{lipsum} % dummy text
+\usepackage{multicol}
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{layer1}
+\pgfdeclarelayer{layer2}
+\pgfdeclarelayer{layer3}
+\pgfdeclarelayer{foreground}
+
+\renewcommand{\labelitemi}{{\Huge$\bullet$}}
+
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+% This macro creates header.
+\newcommand{\HEADING}[1]
+{
+    \tikz \path[] node {\includegraphics[scale=0.3]{./images/heading.png}}
+        node [right] {\fontsize{2.5cm}{1cm}\selectfont
+            \textcolor{black}{\hspace{1cm}#1}
+        };
+    \\
+}
+
+\newcommand{\SECTION}[1]
+{
+    \vspace{0.5cm}
+    \tikz \path[] node {\includegraphics[scale=0.2]{./images/heading.png}}
+        node [right] {\fontsize{1.8cm}{1cm}\selectfont
+            \textcolor{blue}{\hspace{1cm}#1}
+        };
+        \par
+}
+
+\newcommand{\CAPTION}[1]
+{
+    {\fontsize{1.2cm}{1cm}\fontfamily{\sfdefault}\selectfont {\textcolor{black}{#1}}\par}
+}
+
+\newcommand{\TEXT}[1]
+{
+   { \fontsize{1.4cm}{1.0cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
+}
+
+\newcommand{\ITEM}[1]
+{
+    {\fontsize{1cm}{1.0cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
+}
+
+\newcommand{\MOOSE}[0]{\textsc{\textcolor{black}{MOOSE}}}
+
+\newcommand{\MOOSELOGO}[0]{
+    \tikz \node[inner sep=1mm] {\includegraphics[scale=0.6]{./images/moose_logo_tiny.png}}; 
+}
+
+\tikzset{
+  every overlay node/.style={
+    draw=black,fill=white,rounded corners,anchor=north west,
+  },
+}
+% Usage:
+% \tikzoverlay at (-1cm,-5cm) {content};
+% or
+% \tikzoverlay[text width=5cm] at (-1cm,-5cm) {content};
+\def\tikzoverlay{%
+   \tikz[baseline,overlay]\node[draw=white,every overlay node]
+}%
+
+\begin{document}
+
+%\begin{tikzpicture}[remember picture,overlay] 
+    %\node[opacity=1.0] (background) at (current page.center) {
+        %\includegraphics[width=\paperwidth,height=\paperheight]{./background/background.jpg}
+    %};
+%\end{tikzpicture}
+
+\begin{tikzpicture}
+    \centering
+    \node[] (logo) { 
+        \includegraphics[height=6cm]{./images/NCBS-Logo.jpg}
+    };
+
+    \node [] (title) at ([xshift=40cm]logo.east) {
+        \fontsize{4cm}{1em}\selectfont \textcolor{black}{Modelling Memory Across
+            Scales}
+    };
+
+    \node[] (authors) at ([yshift=-1cm]title.south) {
+        \fontsize{1.5cm}{1em}\selectfont Subhasis Ray, Harsha Rani, Aditya
+        Gilra,  Sahil Moza, Aviral Goel, Dilawar Singh, Upinder Bhalla
+    };
+
+    \node [] (mooselogo) at ([xshift=15cm,yshift=0cm]title.east) {
+        \includegraphics[height=6cm]{./images/moose_logo_tiny.png}
+    };
+    \node [] (gpl) at ([xshift=16cm,yshift=-3cm]title.east) {
+        \TEXT{\textsc{An Open-Source Project}}
+    };
+\end{tikzpicture}
+
+%% Three columns
+\vspace{5cm}
+\setlength{\columnsep}{5.5cm}
+\begin{multicols}{3}
+    
+%%%%%%%%%%%% Column 1
+\begin{Figure}
+    \HEADING{1. Why Multiscale?}
+
+        \begin{itemize}[]
+            \item \TEXT{Memory and plasticity involve brain mechanisms from molecular scale to
+                    enormous networks.}
+
+            \item \TEXT{We have developed \textcolor{black}{\textsc{MOOSE}}: Multiscale
+                    Object Oriented Simulation Environment, to model plasticity and brain
+                    computation across scales.}
+        \end{itemize}
+
+        \begin{tikzpicture}[
+        image/.style = {xslant=0.0,yslant=0.0}
+        ]
+        \LARGE
+        \def\lengthScaleFactor{1.4}
+        \def\timeScaleFactor{1.5}
+
+        \newcommand\scaleNode[1]{
+            (0, #1*\timeScaleFactor)
+        }
+
+        \coordinate (sizeRoot) at (0, 1);
+        \coordinate (sizeends) at (0,-1+10*\lengthScaleFactor);
+        \coordinate (timeRoot) at (1,0);
+        \coordinate (timeends) at (1+11*\timeScaleFactor, 0);
+
+
+        \draw[-fast cap, yellow!100, line width=4ex]  (timeRoot) to[] (timeends);
+        \draw[-fast cap, yellow!100, line width=4ex]  (sizeRoot) to[] (sizeends);
+
+
+        \node[] (nm) at (0,1) {$nm$};
+        \node[] (um) at (0,3.5) {$\mu m$};
+        \node[] (mm) at (0,7) {$mm$};
+        \node[] (m) at (0,10.5) {$m$};
+
+        \node[] (us) at (1.5,0) {$\mu$ sec};
+        \node[] (ms) at (4.0,0) {$m$ sec};
+        \node[] (s) at (6.5,0) {sec};
+        \node[] (hrs) at (8.5, 0) {hours};
+        \node[] (days) at (11.5, 0) {days};
+
+        %% Distance between images and y-axis.
+        \def\shifty{-3.0cm}
+
+        \node[image] (n1) at ([xshift=\shifty,yshift=0cm]nm) {
+            \includegraphics[width=0.1\textwidth]{images/8tim_TIM_barrel.png}
+        };
+
+        \node[image] (n2) at ([xshift=\shifty,yshift=0cm]um) {
+            \includegraphics[width=0.1\textwidth]{images/dendrite.png}
+        };
+
+        \node[image] (n3) at ([xshift=\shifty,yshift=-1cm]mm) {
+            \includegraphics[width=0.1\textwidth]{images/GolgiStainedPyramidalCell.jpg}
+        };
+
+        \node[image] (n5) at ([xshift=\shifty,yshift=-1.0cm]m) {
+            \includegraphics[width=0.1\textwidth]{images/brain.png}
+        };
+
+        \node[image] (n4) at ([xshift=\shifty,yshift=1cm]mm) {
+            \includegraphics[width=0.1\textwidth]{images/HippocampalRegions.jpg}
+        };
+
+
+        \node[rectangle, minimum width=12cm, minimum height=6.0cm,
+        rounded corners, opacity=0.3, fill=blue!50] (chemical) at (10.0,4.5) {};
+
+        \node[] (caption) at ([yshift=-1cm]chemical.north) {\LARGE CHEMICAL};
+
+        \node[rectangle, minimum width=4.5cm, minimum height=5cm
+        , opacity=0.5, fill=green!50, rounded corners
+            ] (electrical) at (3.8, 8.5) {};
+
+        \node[] at (electrical.center) {\LARGE ELECTRICAL};
+
+
+        % Put chemical network here
+        \node[] (network) at (7.0,4.0) {
+            \includegraphics[width=5cm]{images/chemical_reactions.png}
+        };
+
+        \node[] (chromosome) at (12.0,5) {
+            \includegraphics[width=5cm]{images/chromosome.png}
+        };
+
+        \node[] (text) at ([xshift=5.5cm,yshift=2cm]electrical.east) {
+            \begin{minipage}{0.35\textwidth}
+                \begin{itemize}[label={}]
+                    \item \LARGE{$10^{11}$ cells, $10^{15}$ synapses, $\sim 10000$
+                            reactions per synapse}
+                    \item \LARGE{Electrical events: $\sim 1$ ms,  Chemical events: $1\;
+                        \text{sec} \rightarrow 1000\; \text{sec}$}
+                    \item \LARGE{Structural events: $100\; \text{sec}
+                        \rightarrow \text{months}$}
+                \end{itemize}
+            \end{minipage}
+        };
+
+    \end{tikzpicture} %
+    \begin{tikzpicture}
+        \def\figwidth{0.1\textwidth}
+        \def\captionwidth{0.28\textwidth}
+        \node[] (stochastic) {
+            \includegraphics[height=\figwidth]{./images/stochastic_solver.png}
+        }; 
+        \node[text width=\captionwidth] at ([yshift=-0.5cm]stochastic.south)
+        {\LARGE{\bf Reaction at single molecule level}
+        };
+        \node[] (ksolve) at ([yshift=-3cm]stochastic.south) {
+            \includegraphics[height=\figwidth]{./images/ksolve_dsolve.png}
+        };
+        \node[text width=\captionwidth] at ([yshift=-0.0cm]ksolve.south) {
+            \LARGE{\bf Reaction Diffusion Solver}};
+        \node[] (hsolve) at ([yshift=-3cm]ksolve.south) {
+            \includegraphics[height=\figwidth]{./images/hsolve.png}
+        };
+        \node[text width=\captionwidth] at ([yshift=-0.0cm]hsolve.south) {
+            \LARGE{\bf Electrical: Hines Solver}};
+    \end{tikzpicture}
+
+    \vspace{2cm}
+
+\HEADING{2. Some projects using MOOSE}
+    \edef\figwidth{0.24\textwidth}
+    \begin{tikzpicture}
+        \node[] (signalling) {
+            \includegraphics[width=\figwidth]{./images/poster_editView.png}
+        };
+        %\node [text width=\figwidth, below=2.7cm] (captionC) {\CAPTION{Signalling Model}};
+    \end{tikzpicture}%
+    \begin{tikzpicture}
+        \node [] (moose_cell) {
+            \includegraphics[width=\figwidth]{./images/_1_7.jpeg}
+        };
+        %\node [text width=\figwidth,below=3.5cm] (captionA) {\CAPTION{Single Neuron Model}};
+    \end{tikzpicture} \hfill%
+    \begin{tikzpicture}
+        \node[] (olfaction) {
+            \includegraphics[width=\figwidth]{./images/fullmodel_moogli.png}
+        };
+        %\node [text width=\figwidth, below=2.7cm] (captionB) {\CAPTION{Olfactory bulb model}};
+    \end{tikzpicture} \hfill%
+    \begin{tikzpicture}
+        \node[] (projectb) {
+            \includegraphics[height=0.15\textwidth]{./images/thalamocortical.png}
+        };
+    \end{tikzpicture} \hfill%
+    \begin{tikzpicture}
+        \node [] (subha) {
+            \includegraphics[width=0.15\textwidth]{./images/reduced_model_pyramidical_cells.png}
+        };
+    \end{tikzpicture}
+
+    \SECTION{2.1 Modelling Memory}
+
+     \begin{tikzpicture}[
+        spy using outlines={circle
+            , magnification=10, connect spies
+        }
+                 ]
+         \centering
+         \node [] (image) at (0,-1) {
+             \includegraphics[scale=0.2,angle=-30]{./images/ca1_neuron.png}
+         };
+
+         \foreach \i in {-3,...,3}
+         \foreach \j in {-3,...,3}
+         {
+             \node[fill=blue,opacity=0.3,thin,inner sep=0pt, minimum size=3mm,circle] (n\i\j) at (\i, \j) {};
+         };
+
+         \spy[blue, size=3cm] on (1.65, -1.5) in node[left] at (7,3);
+         \node[below=4cm,text width=0.3\textwidth] {\CAPTION{A single detailed neuron is
+                 embedded in a network of simple cells}};
+
+         %% Cool. Now create a 3d compartment model here.
+         \begin{scope}[xshift=11cm, yshift=3cm
+             , compartment/.style={cylinder
+                 , draw
+                 , cylinder uses custom fill
+                 , cylinder end fill = red!35
+                 , cylinder body fill = red!40
+                 , inner sep = 3mm
+                 , minimum height = 1cm
+                 , minimum width = 1cm 
+             }
+             , spine/.style={cylinder 
+                 , fill = blue!20
+                 , inner sep=1mm
+                 , minimum height=1mm
+                 , minimum width=3mm
+             }
+             , branch/.style={cylinder
+                 , draw
+                 , cylinder uses custom fill
+                 , cylinder end fill = red!35
+                 , cylinder body fill = red!40
+                 , minimum height = 1.5cm
+                 , minimum width = 0.5cm
+                 , inner sep = 1mm
+             }
+             ]
+
+             \node[compartment] (c1) {};
+             \node[compartment] (c2) at (c1.east) {};
+             \node[compartment] (c3) at (c2.east) {};
+
+             \node[branch,rotate=45] (b1) at ([xshift=4mm,yshift=2mm]c3.before top) {};
+             \node[branch,rotate=-45] (b2) at ([xshift=1mm, yshift=-7mm]c3.base east) {};
+
+             % Spines
+             \node[spine, inner sep=1mm, rotate=135] (s11) at (b1.north east) {};
+             \node[spine, inner sep=1mm, rotate=135] (s12) at ([xshift=3mm]b1.south east) {};
+
+             \node[spine, inner sep=1mm, rotate=45] (s21) at (b2.north east) {};
+             \node[spine, inner sep=1mm, rotate=45] (s22) at ([xshift=-3mm]b2.south east) {};
+
+         \end{scope}
+
+         %% Scope to draw chemisty 
+         \begin{scope}
+
+             \node[] (chemical) at ([yshift=-6cm]c2.south) {
+                 \includegraphics[width=0.35\textwidth, trim=5mm 5mm 5mm 5mm, clip]{./images/chemical_reactions.png}
+             };
+
+             %%  
+             \node [above] (chemicallabel) at ([yshift=-2cm]c1.south) {\LARGE{
+                     Chemical models}};
+
+             \draw[o-o] (c1.center) to [bend right] (chemicallabel.center);
+            
+             %% Add transportation model.
+             \node[] (transport) at ([xshift=7cm,yshift=-3cm]s12.north) {
+                 \includegraphics[width=0.3\textwidth]{./images/transport_mechanism.png}
+             };
+
+             \node[] (tlabel) at ([xshift=0.5cm, yshift=0cm]transport.north) {\LARGE{Trafficking
+                     models}};
+
+             \draw[o-o] (s21.center) to [bend left] (tlabel) ;
+
+         \end{scope}
+     \end{tikzpicture}
+
+
+     \vspace{1cm}
+     \begin{tikzpicture}
+         \node[] (label) at ([xshift=-20cm]tlabel) {
+             \CAPTION{\hspace{12cm} Neighbouring spines are modified differently}
+         };
+     \end{tikzpicture}
+
+     %% memory results by upi
+    \begin{tikzpicture}
+         \node[] (resultb) {
+             \includegraphics[width=0.5\textwidth]{./images/spike_raster.png}
+         };
+     \end{tikzpicture} \hfill %
+     \begin{tikzpicture}
+         \node[] (resultA) {
+             \includegraphics[width=0.5\textwidth]{./images/timeseries.png}
+         };
+     \end{tikzpicture}
+ 
+
+\end{Figure}
+
+%% column2 starts here
+\edef\figwidth{0.95\textwidth}
+\begin{Figure}
+
+    \SECTION{2.2 Modelling Olfactory Bulb}
+    \centering
+    \begin{tikzpicture}
+        \node[] (aditya) {
+            \includegraphics[width=\textwidth]{./images/fullmodel_moogli.png}
+        };
+    \end{tikzpicture}
+    \vspace{1cm}
+
+    \begin{tikzpicture}
+        \node[] (caption) {
+            \begin{minipage}{0.5\textwidth}
+                \TEXT{
+                     The bulb model explains linear coding and phase-decorrelation and
+                    predicts connectivity, lateral dendrite output structure.} 
+            \end{minipage}
+        };
+    \end{tikzpicture} \hfill%
+    \begin{tikzpicture}
+        \node[] (result) {
+            \includegraphics[width=0.45\textwidth]{./images/aditya_work.png}
+        };
+    \end{tikzpicture}
+
+    %% One more model here.
+    \raggedright
+    \SECTION{2.3 Modelling Cortex}
+
+    \TEXT{\bf Predicts:}
+
+    \centering
+    \begin{tikzpicture}
+        \node [] (label) {
+            \begin{minipage}{\textwidth}
+                \TEXT{1. Excitatory-Inhibitory balance needed to avoid strongly oscillatory
+                    behaviour}
+            \end{minipage}
+        };
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \node [] (label) {
+            \begin{minipage}{\textwidth}
+                \TEXT{2. Many weakly connected basket cells better at suppressing
+                    oscillations}
+            \end{minipage}
+        };
+    \end{tikzpicture}
+
+    \vspace{-1cm}
+    \begin{tikzpicture}
+        \node[] (robust) {
+            \includegraphics[width=0.9\textwidth]{./images/subha.png}
+        };
+    \end{tikzpicture}
+
+\end{Figure}
+
+%% Column 3
+\begin{Figure}
+    
+    \SECTION{2.4 Robustness of Chemical Switches}
+
+    \TEXT{\bf Does parameter robustness imply noise robustness?}
+
+   \begin{tikzpicture}
+        \node [] (model) {
+            \includegraphics[width=0.3\textwidth]{./images/model.png}
+        };
+    \end{tikzpicture} %
+    \begin{tikzpicture}
+        \node [] (timeline) {
+            \includegraphics[width=0.6\textwidth]{./images/timeline.png}
+        };
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+        \node [] (timeseries) {
+            \includegraphics[trim=0 0 0 3cm,width=\textwidth,clip]{./images/TimeSeries.png}
+        };
+        \node [] (caption) at ([xshift=-4cm,yshift=0cm]timeseries.north) {
+            \CAPTION{Stochastic simulation of bistable chemical models
+                \hspace{1cm}}
+        };
+
+        \node[inner sep=1mm, minimum size=1.5cm,fill=blue,circle] (a) at
+        (caption.east) {\Huge \textcolor{white}{a}};
+        \node[inner sep=1mm, minimum size=1.5cm,fill=green,circle] (b) at
+            ([xshift=2cm]a.east)  {\Huge b};
+        \node[inner sep=1mm, minimum size=1.5cm,fill=red,circle] (c) at
+        ([xshift=2cm]b.east) {\Huge c};
+
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+        \node [] (density) {
+            \includegraphics[width=0.5\textwidth]{./images/sahil_density.png}
+        };
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \node[] (ktseries) {
+            \includegraphics[width=0.5\textwidth]{./images/KT_statistic_crop.png}
+        };
+    \end{tikzpicture}
+
+    \vspace{1cm}
+   \SECTION{2.5 GUI for Chemical and Electrical Models}
+
+        \begin{tikzpicture}[ image/.style={xslant=0.5, yslant=0.0} ]
+            \node []  {
+                \includegraphics[width=0.5\textwidth]{./images/poster_runView.png}
+            };
+        \end{tikzpicture}%
+        \begin{tikzpicture}
+            \node [] (harsha) {
+                \includegraphics[width=0.5\textwidth]{./images/moose_interface_electrical.png}
+            };
+        \end{tikzpicture}
+
+
+    \vspace{1cm}
+    \HEADING{3. Summary}
+
+    \raggedright
+
+    \TEXT{\bf We use models to:}
+    \begin{itemize}
+
+        \item \TEXT{Integrate many scales of neuronal data with basic
+            physical/chemical principles.}
+        \item \TEXT{Explain phenomena of plasticity, activity and neuronal
+                coding.}
+        \item \TEXT{Predict circuit mechanisms, plasticity rules, and emergent
+            phenomena such as {decorrelation}, {robustness}, and
+            {memory decay}.}
+
+    \end{itemize}
+
+ 
+\end{Figure}
+
+\end{multicols}
+\end{document}

@@ -1,0 +1,24 @@
+\begin{tikzpicture}[remember picture, overlay]
+    \centering
+    \node[] (logo) at ([xshift=15cm, yshift=-5cm]current page.north west) { 
+        \includegraphics[height=6cm]{./images/NCBS-Logo.jpg}
+    };
+
+    \node [] (title) at ([yshift=-5cm]current page.north) {
+        \fontsize{4cm}{1em}\selectfont \textcolor{black}{The Mature MOOSE}
+    };
+
+    \node[] (authors) at ([yshift=-2cm]title.south) {
+        \fontsize{1.5cm}{1em}\selectfont Subhasis Ray, Harsha Rani, Aditya
+        Gilra,  Sahil Moza, Aviral Goel, Dilawar Singh, Upinder Bhalla
+    };
+
+    \node [] (mooselogo) at ([xshift=-15cm,yshift=-5cm]current page.north east) {
+        \includegraphics[height=6cm]{./images/moose_logo_tiny.png}
+    };
+    \node [] (gpl) at ([xshift=1cm,yshift=-0cm]mooselogo.south) {
+        \TEXT{\textsc{An Open-Source Project}}
+    };
+\end{tikzpicture}
+
+

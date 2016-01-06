@@ -6,7 +6,7 @@
     , top=8cm
     , bottom=5cm
     , right=12cm
-    , left=10cm
+    , left=8cm
     ]{geometry}
 
 \usepackage{graphicx}
@@ -50,13 +50,16 @@
 \vspace{0.07\paperheight}
 
 %% Here goes the gallery.
+%\tikz \draw (0, 0) -- (\textwidth, 0);
 \input{gallery}
+\tikz \draw (0, 0) -- (\textwidth, 0);
+
 
 \vspace{0.01\paperheight}
 
 j
 %% Three columns
-\setlength{\columnsep}{5cm}
+\setlength{\columnsep}{3cm}
 \begin{multicols*}{3}
 %% Column 1
 \input{column1}

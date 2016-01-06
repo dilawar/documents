@@ -1,9 +1,12 @@
 % This macro creates header.
+\newcounter{heading}
+\setcounter{heading}{0}
 \newcommand{\HEADING}[1]
 {
+    \addtocounter{heading}{1}
     \noindent
-    {\MOOSELOGO \fontsize{2.0cm}{1cm}\selectfont
-        \textcolor{blue}{\hspace{1cm}#1}
+    { \MOOSELOGO \fontsize{2.0cm}{1cm}\selectfont
+        \arabic{heading}\textcolor{blue}{\hspace{1cm}#1}
     };
     \par
 }

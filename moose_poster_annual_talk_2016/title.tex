@@ -1,6 +1,6 @@
 \begin{tikzpicture}[remember picture, overlay]
     \centering
-    \node[] (logo) at ([xshift=15cm, yshift=-5cm]current page.north west) { 
+    \node[] (logo) at ([xshift=25cm, yshift=-5cm]current page.north west) { 
         \includegraphics[height=6cm]{./images/NCBS-Logo.jpg}
     };
 
@@ -13,12 +13,13 @@
     };
 
     \node[] (authors) at ([yshift=-2cm]title.south) {
-        \fontsize{1.5cm}{1em}\selectfont Upinder S. Bhalla, Niraj Dudani, Aditya
-        Gilra,  Aviral Goel,  Dilawar Singh, G.V. Harsha Rani, Subhasis Ray
+        \fontsize{1.5cm}{1em}\selectfont 
+        G.V. Harsha Rani, Dilawar Singh, Subhasis Roy, Aditya Gilra, Niraj
+        Dudani, Aviral Goel, Upinder Bhalla
     };
 
-    \node [] (mooselogo) at ([xshift=-15cm,yshift=-5cm]current page.north east) {
-        \includegraphics[height=6cm]{./images/moose_logo_tiny.png}
+    \node [] (mooselogo) at ([xshift=-25cm,yshift=-5cm]current page.north east) {
+        \includegraphics[height=5cm]{./images/moose_logo_tiny.png}
     };
     \node [] (gpl) at ([xshift=1cm,yshift=-0cm]mooselogo.south) {
         \TEXT{\textsc{An Open-Source Project}}

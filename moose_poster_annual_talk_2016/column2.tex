@@ -6,7 +6,7 @@
     \node[ ] (reacdiff) {
         \includegraphics[width=0.55\textwidth]{./_images/reaction_diffusion_system.png}
     };
-    \node[ text width = 0.48\textwidth] (reacdifft) at ([yshift=2cm]reacdiff.north) {
+    \node[ text width = 0.48\textwidth] (reacdifft) at ([yshift=3cm]reacdiff.north) {
         \TEXT{
             Repressilator simulation based on Elowitz and Leibler (below).
             Enhanced reaction-diffusion capabilities in MOOSE (on right).
@@ -17,7 +17,7 @@
     \node[] (panelc) {
         \includegraphics[width=0.4\textwidth]{./_images/panelc.png}
     };
-    \node[text width=0.4\textwidth ] (panelct) at ([]panelc.south) {
+    \node[text width=0.4\textwidth ] (panelct) at ([yshift=-3cm]panelc.south) {
         \TEXT{
             Three-comparment reaction scheme for CaMKII activation, translocation
             and receptor trafficking.
@@ -42,7 +42,7 @@
     \node[ ] (chem) at ([yshift=2cm]0,0) {
         \includegraphics[width=0.48\textwidth]{./_images/chemical_computation.png}
     };
-    \node[text width=0.48\textwidth] (chemt) at ([yshift=-2cm]chem.south) {
+    \node[text width=0.48\textwidth] (chemt) at ([yshift=-3cm]chem.south) {
         \TEXT{
             Multiscale model in 4-different cell morphologies. Note the
             diversity of receptor insertion outcome!

@@ -4,7 +4,7 @@
     \TEXT{Memory and plasticity involve brain mechanisms from molecular scale to
         enormous networks }
 
-    \begin{tikzpicture}[scale=1.2,
+    \begin{tikzpicture}[scale=1,
         image/.style = {xslant=0.0,yslant=0.0}
         ]
         \LARGE
@@ -103,29 +103,27 @@
     \end{tikzpicture}
 
     \vspace{1cm}
-    \TEXT{Specialized solvers to handle computations at different scales}
-    \vspace{1cm}
-
     \begin{tikzpicture}
-        \def\figwidth{0.12\textwidth}
-        \def\captionwidth{0.25\textwidth}
+        \def\figwidth{0.2\textwidth}
+        \def\captionwidth{0.3\textwidth}
         \node[] (stochastic) at ([]moose_architecture.south west) {
             \includegraphics[height=\figwidth]{./images/stochastic_solver.png}
         }; 
-        \node[text width=\captionwidth] at ([yshift=-0cm]stochastic.south)
-        {\LARGE{\bf Stochastic Solver (a few molecules)}
+        \node[text width=\captionwidth] at ([yshift=-1cm]stochastic.south)
+        {\TEXT{ Stochastic}
         };
-        \node[] (ksolve) at ([xshift=15cm]stochastic.east) {
+        \node[] (ksolve) at ([xshift=0.3\textwidth]stochastic.east) {
             \includegraphics[height=\figwidth]{./images/ksolve_dsolve.png}
         };
-        \node[text width=\captionwidth] at ([yshift=-0.0cm]ksolve.south) {
-            \LARGE{\bf Reaction Diffusion Solver}};
-        \node[] (hsolve) at ([xshift=15cm]ksolve.east) {
+        \node[text width=\captionwidth] at ([yshift=-1cm]ksolve.south) {
+            \TEXT{ Reaction Diffusion}};
+        \node[] (hsolve) at ([xshift=0.3\textwidth]ksolve.east) {
             \includegraphics[height=\figwidth]{./images/hsolve.png}
         };
-        \node[text width=\captionwidth] at ([yshift=-0.0cm]hsolve.south) {
-            \LARGE{\bf Electrical: Hines Solver}};
+        \node[text width=\captionwidth] at ([yshift=-1cm]hsolve.south) {
+            \TEXT{ Electrical: Hines}};
     \end{tikzpicture}
+    \TEXT{Specialized solvers to handle computations at different scales}
 
     \vspace{2cm}
     \HEADING{Python Interface, GUI to create/edit models}
@@ -140,15 +138,16 @@
             \includegraphics[width=0.5\textwidth]{./images/moose_interface_electrical.png}
         };
     \end{tikzpicture}
-
     \vspace{2cm}
     \HEADING{3-D visualizer to play network activity}
 
-    \begin{tikzpicture}[ ]
-        \node [ anchor=east ] (moogli)  {
-            \hfill
-            \includegraphics[height=22cm,width=0.8\textwidth]{./_images/moogli.png}
-        };
-    \end{tikzpicture}
+    { 
+        \hspace{3cm} 
+        \begin{tikzpicture}[ ]
+            \node [ ] (moogli)  {
+                \includegraphics[height=22cm,width=0.8\textwidth]{./_images/moogli.png}
+            };
+        \end{tikzpicture}
+    }
 
 \end{Figure}

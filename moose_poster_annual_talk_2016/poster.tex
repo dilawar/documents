@@ -5,7 +5,7 @@
     , landscape
     , top=8cm
     , bottom=5cm
-    , right=10cm
+    , right=12cm
     , left=10cm
     ]{geometry}
 
@@ -39,20 +39,20 @@
 
 \begin{document}
 
-%\begin{tikzpicture}[remember picture,overlay] 
-    %\node[opacity=1.0] (background) at (current page.center) {
-        %\includegraphics[width=\paperwidth,height=\paperheight]{./background/background.jpg}
-    %};
-%\end{tikzpicture}
+\begin{tikzpicture}[remember picture,overlay] 
+    \node[opacity=1.0] (background) at ([yshift=-1cm]current page.center) {
+        \includegraphics[width=\paperwidth,height=0.95\paperheight]{./background/background.png}
+    };
+\end{tikzpicture}
 
 \input{title}
 
-\vspace{0.04\paperheight}
+\vspace{0.07\paperheight}
 
 %% Here goes the gallery.
 \input{gallery}
 
-\vspace{0.03\paperheight}
+\vspace{0.01\paperheight}
 
 j
 %% Three columns

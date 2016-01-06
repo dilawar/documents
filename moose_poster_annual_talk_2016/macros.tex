@@ -2,23 +2,19 @@
 \newcommand{\HEADING}[1]
 {
     \noindent
-    \tikz \path[] 
-        % node {\includegraphics[scale=0.3]{./images/heading.png}}
-        node [right] {\fontsize{2.5cm}{1cm}\selectfont
-            \textcolor{blue}{\hspace{1cm}#1}
-        };
-    \\
+    {\MOOSELOGO \fontsize{2.0cm}{1cm}\selectfont
+        \textcolor{blue}{\hspace{1cm}#1}
+    };
+    \par
 }
 
 \newcommand{\SECTION}[1]
 {
     \vspace{0.5cm}
     \tikz \path[] 
-        %node {\includegraphics[scale=0.2]{./images/heading.png}}
         node [right] {\fontsize{1.8cm}{1cm}\selectfont
             \textcolor{blue}{\hspace{1cm}#1}
         };
-        \par
 }
 
 \newcommand{\CAPTION}[1]

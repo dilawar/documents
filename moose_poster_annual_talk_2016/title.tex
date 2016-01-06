@@ -4,8 +4,12 @@
         \includegraphics[height=6cm]{./images/NCBS-Logo.jpg}
     };
 
-    \node [] (title) at ([yshift=-5cm]current page.north) {
+    \node [align=center, execute at begin node=\setlength{\baselineskip}{2cm}] (title) at ([yshift=-5cm]current page.north) {
         \fontsize{4cm}{1em}\selectfont \textcolor{black}{The Mature MOOSE}
+        \\
+        \fontsize{2cm}{1em} \selectfont \textcolor{black} { 
+            {\bf M}ultiscale {\bf O}bject {\bf O}riented {\bf S}imulation {\bf E}nvironment
+        }
     };
 
     \node[] (authors) at ([yshift=-2cm]title.south) {

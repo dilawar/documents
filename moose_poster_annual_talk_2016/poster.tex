@@ -43,6 +43,11 @@
     \node[opacity=1.0] (background) at ([yshift=-1cm]current page.center) {
         \includegraphics[width=\paperwidth,height=0.95\paperheight]{./background/background.png}
     };
+    \node[align=right, text width = 25cm] (credit) at ([xshift=-20cm]background.south east) { 
+        \LARGE{Poster outline credit: Shriya Palchaudhuri}  \\
+        \Large{No propriety software was used to prepare this document. Typeset in \LaTeX.}
+    };
+
 \end{tikzpicture}
 
 \input{title}
@@ -53,11 +58,10 @@
 %\tikz \draw (0, 0) -- (\textwidth, 0);
 \input{gallery}
 \tikz \draw (0, 0) -- (\textwidth, 0);
-
-
 \vspace{0.01\paperheight}
 
-j
+%% Tiny lines which no one reads.
+
 %% Three columns
 \setlength{\columnsep}{3cm}
 \begin{multicols*}{3}
@@ -66,7 +70,5 @@ j
 %% column2 starts here
 \input{column2}
 \input{column3}
-
 \end{multicols*}
-
 \end{document}

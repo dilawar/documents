@@ -16,22 +16,18 @@
 \begin{tikzpicture}[scale=1,
     , every node/.style={ circle }
     ]
-
-    \node [circle, draw] (rdesigneur) at (0,0) {\texttt{moose.redesigneur}};
+    \node (rdesigneur) at (0,0) {};
 
     { [ xshift=-0.5\textwidth,yshift=0.0\textwidth]
         % neuromorpho 
         \node[rectangle] (neuromorphoSummary) {
-            \includegraphics[width=0.5\textwidth]{./../_images/neuromorpho_summary.png}
-        };
-        \node[] (single_neuron) at (neuromorphoSummary.north) {
-            \includegraphics[width=0.2\textwidth]{../images/neuron_with_spine.png}
+            \includegraphics[angle=90,width=0.5\textwidth]{./../_images/neuromorpho_summary.png}
         };
     }
 
     { [ yshift=0.5\textwidth ]
         \node[circle] (channelExample)  {
-            \includegraphics[width=0.3\textwidth]{./../_images/channelpedia_example.png}
+            \includegraphics[width=0.4\textwidth]{./../_images/channelpedia_example.png}
         };
     }
 
@@ -41,11 +37,12 @@
             \includegraphics[width=0.5\textwidth]{./../_images/acc67.png}
         };
 
-        \node[] (doqcs2) at (doqcs.north) {
+        \node[] (doqcs2)  at (doqcs.north) {
             \includegraphics[width=0.4\textwidth]{../_images/acc95.png}
         };
     }
 
+    \node [circle, draw, minimum size=7cm, fill=blue!10] (rdesigneur) at (0,0) {\texttt{moose.redesigneur}};
 
     { [ draw=none,fill=red!10 ]
         \drawsector[fill=blue,opacity=0.3]{4}{1}{210}{80}{Electrical Models};
@@ -65,6 +62,8 @@
         \drawsector[draw=none,fill=red!10]{4.75}{0.5}{30}{30}{Bio Models};
 
     }
+
+
 
 \end{tikzpicture}    
 

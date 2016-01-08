@@ -1,0 +1,4 @@
+Check on acrobat reader before sending for print.
+
+pdflatex may not generate the latest version of pdf. Probably eps -> pdf would
+work.

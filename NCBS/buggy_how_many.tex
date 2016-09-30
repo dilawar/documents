@@ -1,0 +1,62 @@
+%%=====================================================================================
+%%
+%%       Filename:  buggy_how_many.tex
+%%
+%%    Description:  How many people are in buggy.
+%%
+%%        Version:  1.0
+%%        Created:  09/30/2016
+%%       Revision:  none
+%%
+%%         Author:  Dilawar Singh (), dilawars@ncbs.res.in
+%%   Organization:  NCBS Bangalore
+%%      Copyright:  Copyright (c) 2016, Dilawar Singh
+%%
+%%          Notes:  
+%%                
+%%=====================================================================================
+
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=10mm, left=20mm]{geometry}
+\usepackage{pgf,tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usetikzlibrary{shapes,backgrounds,decorations,decorations.pathmorphing}
+\usetikzlibrary{calendar}
+% Title Page
+\title{Buggy Trip}
+\date{\today}
+\begin{document}
+
+\foreach \d in {01,02,03,04,05,06,07,09,09,10,...,31}
+{
+    \begin{tikzpicture}
+        \calendar (mycal) [dates=2016-10-01 to 2016-10-31
+            %, month list
+            , week list
+            , month label above centered
+            , month yshift=1.2em
+            , right
+            ];
+        \draw[red] (mycal-2016-10-\d) circle (5pt);
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+        \node (row0) {};
+        \foreach[count=\i] \x in {0,1,...,22}
+        {
+            \node[below of=row\x] (row\i) {
+                    \begin{tabular}{p{3cm}|p{3cm}|p{2cm}|p{4cm}}
+                        \hline
+                        \tiny Time & \tiny NCBS/Mandara & \tiny  Count & \tiny  Sign \\
+                        & & & &  
+                    \end{tabular}
+                };
+        }
+    \end{tikzpicture}
+    \newpage
+}
+
+\end{document}          
+

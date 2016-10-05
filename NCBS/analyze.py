@@ -46,7 +46,7 @@ def main( ):
     plt.boxplot( boxes )
     plt.xlabel( 'Time, Buggy leaving NCBS (to/fro together)' )
     plt.ylabel( 'No of people (in to/fro trips combined)' )
-    plt.xticks( range(1,14), data['oct1']['Time'] )
+    plt.xticks( range(1,14), data['oct1']['Time'][::2] )
     plt.title( 'Trip-wise usage' )
 
     plt.suptitle( 'Total days = %d' % len(data) )

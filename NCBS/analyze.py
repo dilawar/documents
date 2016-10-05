@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 try:
-    mpl.style.use( 'seaborn-talk' )
+    mpl.style.use( 'ggplot' )
 except Exception as e:
     pass
 mpl.rcParams['axes.linewidth'] = 0.1

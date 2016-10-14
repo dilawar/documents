@@ -22,7 +22,7 @@ def main( ):
         count = sheetData['Count']
         # Add two entries together since buggy has to come back
         yvec = []
-        for i in range( len(count) / 2 ):
+        for i in range( int(len(count) / 2) ):
             yvec.append( count[2*i] + count[2*i+1] )
         newData.append( yvec )
     

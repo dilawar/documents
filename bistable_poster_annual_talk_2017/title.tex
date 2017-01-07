@@ -1,0 +1,35 @@
+\begin{tikzpicture}[remember picture, overlay]
+    \centering
+    \node[] (logo) at ([xshift=10cm, yshift=-5cm]current page.north west) { 
+        \includegraphics[height=6cm]{./images/NCBS-Logo.jpg}
+    };
+
+\node [
+        align=center
+        , shape = rectangle
+        %, text width=0.7\paperwidth
+    %, execute at begin node=\setlength{\baselineskip}{2cm}] 
+    ]
+    (title) at ([yshift=-7cm]current page.north) {
+        \fontsize{72}{72}\selectfont { % here goes the title 
+            Modeling Synaptic Switches and \textcolor{red}{Protein Synthesis}
+            involved in Plasticity and \textcolor{red}{Fragile X Syndrome}
+        }
+    };
+
+    \node[ align = center ] (authors) at ([yshift=-2cm]title.south) {
+            \Huge
+            Dilawar Singh $^1$, Nisha Ann Viswan $^1$, Aditi Bhattacharya$^2$
+            , Melanie Stefan$^3$, Upinder S. Bhalla $^1$ \\
+            \Large
+            $^1$ National Center for Biological Sciences, Bangalore, $^2$ InStem, Bangalore
+            , $^3$ University of Edinburgh, Edinburgh
+        };
+
+    \node [] (mooselogo) at ([xshift=-10cm,yshift=-5cm]current page.north east) {
+        \includegraphics[height=5cm]{./images/moose_logo_tiny.png}
+    };
+    \node [] (gpl) at ([xshift=1cm,yshift=-0cm]mooselogo.south) {
+        \TEXT{\textsc{An Open-Source Project}}
+    };
+\end{tikzpicture}

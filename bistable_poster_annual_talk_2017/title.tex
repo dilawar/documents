@@ -8,19 +8,22 @@
         align=center
         , shape = rectangle
         %, text width=0.7\paperwidth
+        , inner sep=1cm
     %, execute at begin node=\setlength{\baselineskip}{2cm}] 
     ]
     (title) at ([yshift=-7cm]current page.north) {
-        \fontsize{72}{72}\selectfont { % here goes the title 
-            Modeling Synaptic Switches and \textcolor{red}{Protein Synthesis}
-            involved in Plasticity and \textcolor{red}{Fragile X Syndrome}
+        \textbf{ \sffamily
+        \fontsize{72}{84}\selectfont { % here goes the title 
+            Modeling Synaptic Switches Involved in Plasticity {\&}
+            \textcolor{gray}{Protein Synthesis in Fragile X Syndrome}
         }
+    }
     };
 
     \node[ align = center ] (authors) at ([yshift=-2cm]title.south) {
             \Huge
-            Dilawar Singh $^1$, Nisha Ann Viswan $^1$, Aditi Bhattacharya$^2$
-            , Melanie Stefan$^3$, Upinder S. Bhalla $^1$ \\
+            Dilawar Singh $^1$, Upinder S. Bhalla $^1$, \textcolor{gray}{Nisha Ann Viswan $^1$, Aditi Bhattacharya$^2$
+            , Melanie Stefan$^3$, Upinder S. Bhalla $^1$} \\
             \Large
             $^1$ National Center for Biological Sciences, Bangalore, $^2$ InStem, Bangalore
             , $^3$ University of Edinburgh, Edinburgh

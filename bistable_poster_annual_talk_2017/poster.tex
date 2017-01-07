@@ -14,7 +14,6 @@
 \usepackage{graphicx}
 \usepackage{standalone}
 \usepackage{amsmath}
-%\usepackage{avant}
 \usepackage{lmodern}
 \usepackage{tikz}
 \usepackage{tikzscale}
@@ -36,8 +35,9 @@
 \pgfdeclarelayer{foreground}
 
 % set fonts.
-%\usepackage[scaled]{helvet}
-\usepackage[sfdefault]{FiraSans}
+\usepackage[scaled]{helvet}
+%\usepackage{avant}
+%\usepackage[sfdefault]{FiraSans}
 \renewcommand\familydefault{\sfdefault} 
 \usepackage[T1]{fontenc}
 
@@ -51,10 +51,10 @@
 %% Three columns
 \setlength{\columnsep}{3cm}
 \begin{multicols*}{3}
-    %% Column 1
-    \input{column1}
-    %% column2 starts here
-    %\input{column2}
-    %\input{column3}
+%% Column 1
+\input{column1}
+%% column2 starts here
+%\input{column2}
+%\input{column3}
 \end{multicols*}
 \end{document}

@@ -1,60 +1,48 @@
-\documentclass[20pt]{extarticle}
-\usepackage{anyfontsize}
-
-\usepackage[paperwidth=120cm
-    , paperheight=150cm
-    , landscape
-    , top=8cm
-    , bottom=5cm
-    , right=12cm
-    , left=8cm
-    ]{geometry}
-
-%\pdfminorversion=7
-\usepackage{graphicx}
-\usepackage{standalone}
-\usepackage{amsmath}
-\usepackage{lmodern}
-\usepackage{tikz}
-\usepackage{tikzscale}
-\usepackage{enumitem}
-\usetikzlibrary{shapes,arrows,positioning}
-\usetikzlibrary{arrows.spaced}
-\usetikzlibrary{decorations.text}
-\usetikzlibrary{spy,calc,fit}
-\usetikzlibrary{shapes.arrows}
-
-\usepackage{color}
-\usepackage{moresize}
-\usepackage{multicol}
-
-\pgfdeclarelayer{background}
-\pgfdeclarelayer{layer1}
-\pgfdeclarelayer{layer2}
-\pgfdeclarelayer{layer3}
-\pgfdeclarelayer{foreground}
+%\documentclass[20pt]{extarticle}
+%\usepackage{anyfontsize}
+\documentclass[landscape]{tikzposter}
+\geometry{paperwidth=120cm,paperheight=150cm}
+\usetheme{Board}
 
 % set fonts.
 \usepackage[scaled]{helvet}
 %\usepackage{avant}
-%\usepackage[sfdefault]{FiraSans}
+\usepackage[sfdefault]{FiraSans}
 \renewcommand\familydefault{\sfdefault} 
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
+%\usepackage{authblk}
 
-\include{macros}
+\title{ \parbox{.8\paperwidth}{\centering Modeling Chemical Bistables and Protein
+Synthesis involved in Plasticity and Fragile-X Syndrome}}
+\author{ Dilawar Singh $^1$, Upinder S. Bhalla $^1$, Nisha Ann Viswan $^1$
+    , Aditi Bhattacharya$^2$ , Melanie Stefan$^3$, Upinder S. Bhalla $^1$ }
+
+\institute{ $^1$ National Center for Biological Sciences, Bangalore, $^2$ InStem, Bangalore
+    , $^3$ University of Edinburgh, Edinburgh }
+
+ 
 \begin{document}
 
-\input{title}
+\maketitle[width=0.8\textwidth]
 
-\vspace{0.07\paperheight}
+\begin{columns}
+    \column{0.33}
+    \input{column1}
+    \column{0.33}
+    %\input{column2}
+    \column{0.33}
+    %\input{column3}
+\end{columns}
+
+
 
 %% Three columns
-\setlength{\columnsep}{3cm}
-\begin{multicols*}{3}
+%\setlength{\columnsep}{3cm}
+%\begin{multicols}{3}
 %% Column 1
-\input{column1}
+%\input{column1}
 %% column2 starts here
 %\input{column2}
 %\input{column3}
-\end{multicols*}
+%\end{multicols}
 \end{document}

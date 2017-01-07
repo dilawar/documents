@@ -5,7 +5,7 @@
 {
     \addtocounter{heading}{1}
     \noindent
-    { \MOOSELOGO \fontsize{2.0cm}{1cm}\selectfont
+    { \Huge
         \arabic{heading}\textcolor{blue}{\hspace{1cm}#1}
     };
     \par
@@ -15,19 +15,19 @@
 {
     \vspace{0.5cm}
     \tikz \path[] 
-        node [right] {\fontsize{1.8cm}{1cm}\selectfont
+        node [right] {\LARGE
             \textcolor{blue}{\hspace{1cm}#1}
         };
 }
 
 \newcommand{\CAPTION}[1]
 {
-    {\fontsize{1.2cm}{1cm}\fontfamily{\sfdefault}\selectfont {\textcolor{black}{#1}}\par}
+    {\Large {\textcolor{black}{#1}}\par}
 }
 
 \newcommand{\TEXT}[1]
 {
-   { \fontsize{1.4cm}{1.7cm}\fontfamily{\sfdefault}\selectfont {#1}\par }
+   { \LARGE {#1}\par }
 }
 
 \newcommand{\ITEM}[1]

@@ -3,15 +3,22 @@ import random
 import matplotlib.pyplot as plt
 from neurodynex.hopfield_network import network, pattern_tools, plot_tools
 
+add_extra = False
+
 # the letters we want to store in the hopfield network
 letter_list = ['N', 'C', 'B', 'S', 'X', 'Y', 'Z']
-extra = [ 'P' ]
+extra = [ 'P', 'Q' ]
+if add_extra == True:
+    letter_list += extra
+
 nRows, maxCols = 4, len(letter_list)
 abc_dictionary = pattern_tools.load_alphabet()
 
 def add_noise( letter, noise_level = 0.2 ):
     pat = abc_dictionary[letter]
-    print( "[INFO ] Adding noise (level=%f) to %s" % (noise_level, letter) )
+    print( "[INFO ] Adding noise (level=%f) to %s" % (noise_level, letter))
+    #  input( "Press any key to continue" )
+    #  print( "  to %s" % letter )
     for (i, j), v in np.ndenumerate(pat):
         if random.random() < noise_level:
             pat[i, j] = random.choice( [-1, 1] )
@@ -30,6 +37,8 @@ def main():
             )
     
     pattern_list = [abc_dictionary[key] for key in letter_list ]
+
+    plt.figure( figsize=(12, 6) )
     
     for i, a in enumerate(pattern_list):
         ax = plt.subplot( nRows, maxCols, i+1)
@@ -41,7 +50,15 @@ def main():
     print( "[INFO ] Saved patterns into hopfield network." )
     
     # create a noisy version of a pattern and use that to initialize the network
-    noisy_init_state = add_noise( random.choice(letter_list), noise_level=0.5)
+    l = random.choice( letter_list )
+
+    noise_level = 0.5
+    if add_extra:
+        noise_level = 0.1
+        print( '[INFO] More patterns than net can handle. Catastrophic'
+            ' forgetting going to happen.'
+        )
+    noisy_init_state = add_noise( l, noise_level= noise_level)
 
     hopfield_net.set_state_from_pattern(noisy_init_state)
     
@@ -65,7 +82,10 @@ def main():
         
 
     plt.tight_layout()
-    plt.savefig('iteration.png')
+    plt.show()
+    outfile = 'final_%s.png' % l
+    plt.savefig( outfile )
+    print( '|| Saved to %s' % outfile )
     plt.close()
 
 if __name__ == '__main__':

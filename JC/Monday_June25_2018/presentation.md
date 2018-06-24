@@ -8,7 +8,7 @@ fontfamily: libertine
 theme : metropolis
 mainfont: Fira Sans
 header-includes:
-    - \usepackage{graphviz}
+    - \usepackage{tikz}
 ---
 
 # Attractor networks
@@ -17,5 +17,18 @@ header-includes:
 
 - Popular framework to create associations
 
-![Recurrent Neural Net](figures/hopfield.pdf)
+::::::::::::::::: {.columns}
 
+:::: {.column width=40%}
+
+![Recurrent Neural Net](figures/tikz_hopfield.pdf)
+
+:::: {.column width=40%}
+
+\begin{tikzpicture}[scale=1, every node/.style={} ]
+    \node[circle, draw] (neuron) {$\sum x_i w_i$};    
+\end{tikzpicture}	
+
+::::::::::::::::::::::
+
+# Another column

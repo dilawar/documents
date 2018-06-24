@@ -8,5 +8,5 @@ demo : ./hopfield_demo.py
 persentation : ./presentation.pdf
 
 
-./presentation.pdf : ./presentation.md
-	pandoc -t beamer $< -o $@
+./presentation.pdf : ./presentation.tex
+	latexmk -pdf $<

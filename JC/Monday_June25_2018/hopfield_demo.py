@@ -6,7 +6,7 @@ from neurodynex.hopfield_network import network, pattern_tools, plot_tools
 add_extra = False
 
 # the letters we want to store in the hopfield network
-letter_list = ['N', 'C', 'B', 'S', 'X', 'Y', 'Z']
+letter_list = ['N', 'C', 'B', 'S', 'X', 'Y' ]
 extra = [ 'P', 'Q' ]
 if add_extra == True:
     letter_list += extra
@@ -24,7 +24,7 @@ def add_noise( letter, noise_level = 0.2 ):
             pat[i, j] = random.choice( [-1, 1] )
     return pat
 
-def main():
+def main( plot = True ):
     # set a seed to reproduce the same noise in the next run
     # numpy.random.seed(123)
     
@@ -38,12 +38,12 @@ def main():
     
     pattern_list = [abc_dictionary[key] for key in letter_list ]
 
-    plt.figure( figsize=(12, 6) )
-    
-    for i, a in enumerate(pattern_list):
-        ax = plt.subplot( nRows, maxCols, i+1)
-        ax.imshow( a )
-        ax.axis('off')
+    if plot:
+        plt.figure( figsize=(12, 6) )
+        for i, a in enumerate(pattern_list):
+            ax = plt.subplot( nRows, maxCols, i+1)
+            ax.imshow( a )
+            ax.axis('off')
     
     # store the patterns
     hopfield_net.store_patterns(pattern_list)
@@ -68,25 +68,26 @@ def main():
     # each network state is a vector. reshape it to the same shape used to create the patterns.
     states_as_patterns = pattern_tools.reshape_patterns(states, pattern_list[0].shape)
 
-    # plot the states of the network
-    for i, pat in enumerate( states_as_patterns ):
-        overlap_list = pattern_tools.compute_overlap_list(pat, pattern_list)
-        ax = plt.subplot( nRows, maxCols, maxCols+i+1 )
-        ax.imshow( pat )
-        ax.axis('off')
-        ax1 = plt.subplot( nRows, maxCols, 2*maxCols+i+1)
-        ax1.bar( range(len(overlap_list)), overlap_list )
-        #  ax1.set_ylim( -1, 1 )
-        ax1.set_xticks( range(len(overlap_list)) )
-        ax1.set_xticklabels( letter_list )
-        
+    if plot:
+        for i, pat in enumerate( states_as_patterns ):
+            overlap_list = pattern_tools.compute_overlap_list(pat, pattern_list)
+            ax = plt.subplot( nRows, maxCols, maxCols+i+1 )
+            ax.imshow( pat )
+            ax.axis('off')
+            ax1 = plt.subplot( nRows, maxCols, 2*maxCols+i+1)
+            ax1.bar( range(len(overlap_list)), overlap_list )
+            #  ax1.set_ylim( -1, 1 )
+            ax1.set_xticks( range(len(overlap_list)) )
+            ax1.set_xticklabels( letter_list )
 
-    plt.tight_layout()
-    plt.show()
-    outfile = 'final_%s.png' % l
-    plt.savefig( outfile )
-    print( '|| Saved to %s' % outfile )
-    plt.close()
+        plt.tight_layout()
+        outfile = 'figures/final_%s.png' % l
+        plt.savefig( outfile )
+        print( '|| Saved to %s' % outfile )
+        plt.show()
+        plt.close()
+
+    return pattern_list, noisy_init_state, states_as_patterns
 
 if __name__ == '__main__':
     main()

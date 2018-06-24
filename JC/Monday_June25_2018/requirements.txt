@@ -1,0 +1,3 @@
+neurodynex
+matplotlib
+numpy

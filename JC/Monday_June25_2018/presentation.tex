@@ -2,6 +2,7 @@
 \usetheme{metropolis}
 \usepackage[sfdefault]{FiraSans}
 \usepackage{pgf}
+\usepackage{grffile}
 \usepackage{tikzsymbols}
 \usepackage{enumitem}
 \usepackage{pgfplots}
@@ -304,8 +305,18 @@ input currents $h_i$ (A). From $h_i$, we infer learning rules (C).}
 
 \begin{frame}
     \frametitle{Methods}
+
+    \only<1>{
         \includegraphics[width=\textwidth]{./figures/brunel_presentation_slide26.png}
         \includegraphics[width=0.7\textwidth]{./figures/brunel_presentation_slide24.png}
+    }
+    
+    \only<2>{
+        \includegraphics[width=\textwidth]{./figures/nn.4158-SF7.jpg}
+    }
+
+    Time course of mean and maximal visual responses of ITC neurons obtained in
+    a passive viewing task.
 
 \end{frame}
 

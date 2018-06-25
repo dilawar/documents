@@ -157,9 +157,9 @@
 \begin{frame}
     \frametitle{Inferring Transfer Function and Learning Rule from ITC Data}
 
-    {\small We observe firing rate. Transfer function $\phi$ converts
-    firing rates to normally distributed input currents $h_i$. From $h_i$, we
-    infer learning rules.}
+    {\small Observed firing rate (B). Transfer function $\phi: h \rightarrow f$
+    converts firing rates to (\textcolor{red}{assumption}) normally distributed
+input currents $h_i$ (A). From $h_i$, we infer learning rules (C).}
 
     \only<1>{
         \begin{columns}[c]
@@ -174,23 +174,23 @@
             \column{0.5\textwidth}
             \begin{enumerate}[label=(\Alph*)]
                 \tiny
+            \item How $\phi$ is computed? Lim et. al., NatNeu. 2015.
             \item Firing rate distribution w.r.t novel stimuli.  Experimentally recorded (\textcolor{blue}{blue}).
                 $\mathcal{N}(1,0)\phi$ where tranfer function \textbf{$\phi: \text{input
                 current} \rightarrow \text{Firing rate}$} is from
                 {\bf B} (\textcolor{red}{red}). Assumption: input current is sampled
                 from Gaussian.
-            \item How $\phi$ is computed? Lim et. al., NatNeu. 2015. Later. 
             \item Synaptic plasticity v/s firing rate ($f_r$). 
+            \item Estimation.
         \end{enumerate}
     \end{columns}
     }
     
     \only<2>{
-        \begin{alertblock}{Estimation of learning rules from $\phi$}
-        
-        \end{alertblock}
-
+        \includegraphics[width=\textwidth]{./figures/brunel_presentation_slide25.png}
+        \includegraphics[width=\textwidth]{./figures/brunel_presentation_slide26.png}
     }
+    \footnote{Lin, 2015, NatNeu.}
 \end{frame}
 
 % figure 3.
@@ -300,6 +300,13 @@
         variability in firing patterns!}, and, (I) Overlap
         (roughly same).
     }
+\end{frame}
+
+\begin{frame}
+    \frametitle{Methods}
+        \includegraphics[width=\textwidth]{./figures/brunel_presentation_slide26.png}
+        \includegraphics[width=0.7\textwidth]{./figures/brunel_presentation_slide24.png}
+
 \end{frame}
 
 \end{document}

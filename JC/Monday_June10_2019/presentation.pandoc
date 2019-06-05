@@ -1,14 +1,69 @@
-% Are place cells just memory cells? Memory compression leads to spatial tuning and history dependence
-% Dilawar Singh
-% NBJC, June 10, 2018
+---
+title: Are place cells just memory cells? Memory compression leads to spatial tuning and history dependence
+author: Dilawar Singh
+date: June 10, 2018
+theme: metropolis
+---
 
 
 # Place cells
 
-![](https://cshperspectives.cshlp.org/content/7/2/a021808/F1.large.jpg)
+![](https://cshperspectives.cshlp.org/content/7/2/a021808/F1.large.jpg){ width=90% }
 
 Place cells → "Encodes the position of the animal in its environment"
 
 - Video on Youtube [Click Me](https://www.youtube.com/watch?v=lfNVv0A8QvI)
 
+# Roles of Hippocampus 
 
+- Spatial cognitive maps and navigation
+- Role in episodic (_who, what, when, where, etc._) and declarative memory
+
+This paper,
+
+> Reconciles these two dominant, but apparently different points of view.
+
+# Hippocampus as spatial cognitive maps (place cells)
+
+because, __some place cells fire only when animal is in one particular location
+  (single field place cells)__
+
+# Hippocampus as spatial cognitive maps (place cells), but
+
+- A signle neuron often (always?) participate in multiple tasks
+  - Why neurons mix: high dimensionality for higher cognition, Fusi et. al.,
+    2014
+  - Barlow versus Hebb: When is it time to abandon the notion of feature
+    detectors and adopt the cell assembly as the unit of cognition?, Eichenbaum
+    2017
+
+- Activity of a single neuron is highly variable in time
+  - Long-term dynamics of CA1 hippocampal place codes, Ziv et. al., 2013
+  - Place cell discharge is extremely variable during individual passes of the
+    rat through the firing field, Fenton et. al., 1998
+
+- Activity of a single neuron can be modulated by multiple variables
+
+# Hippocampus in this paper
+
+- Acts as a memory device: store many correlated patterns.
+- Spatial tuning (place cells) is an emergent property.
+- has place cells which shows history effects
+
+# Hippocampus as a storage device
+
+Q: What is a good strategy (to increase the capapcity) to store many correlated
+patterns? 
+
+A: __Remove redundancy__ Extract uncorrelated components and store them.
+   ^[Hippocampal mediation of stimulus representation: A computational theory,
+   Gluck and Myers, 1993]
+
+# Storing correlated patterns efficiently
+
+Old idea:
+![](https://www.biorxiv.org/content/biorxiv/early/2019/05/13/624239/F1.large.jpg){ width=80% }
+
+# Storing correlated patterns efficiently
+
+![](https://www.biorxiv.org/content/biorxiv/early/2019/05/13/624239/F2.large.jpg)

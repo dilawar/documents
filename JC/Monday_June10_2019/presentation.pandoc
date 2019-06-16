@@ -2,7 +2,7 @@
 title: Are place cells just memory cells? Memory compression leads to spatial tuning and history dependence
 author: Dilawar Singh
 date: June 10, 2018
-theme: metropolis
+urlcolor: cyan
 ---
 
 
@@ -14,19 +14,18 @@ Place cells → "Encodes the position of the animal in its environment"
 
 - Video on Youtube [Click Me](https://www.youtube.com/watch?v=lfNVv0A8QvI)
 
-# Roles of Hippocampus 
+# Two major roles of Hippocampus 
 
-- Spatial cognitive maps and navigation
-- Role in episodic (_who, what, when, where, etc._) and declarative memory
+1. Spatial cognitive maps and navigation
+   - Some place cells fire only when animal is in one particular location
+  (single field place cells)
+
+
+2. Episodic (_who, what, when, where, etc._) and declarative memory
 
 This paper,
 
 > Reconciles these two dominant, but apparently different points of view.
-
-# Hippocampus as spatial cognitive maps (place cells)
-
-because, __some place cells fire only when animal is in one particular location
-  (single field place cells)__
 
 # Hippocampus as spatial cognitive maps (place cells), but
 
@@ -48,7 +47,6 @@ because, __some place cells fire only when animal is in one particular location
 
 - Acts as a memory device: store many correlated patterns.
 - Spatial tuning (place cells) is an emergent property.
-- has place cells which shows history effects
 
 # Hippocampus as a storage device
 
@@ -61,9 +59,63 @@ A: __Remove redundancy__ Extract uncorrelated components and store them.
 
 # Storing correlated patterns efficiently
 
-Old idea:
+Old idea, ultra-metric Tree.
+
 ![](https://www.biorxiv.org/content/biorxiv/early/2019/05/13/624239/F1.large.jpg){ width=80% }
 
 # Storing correlated patterns efficiently
 
-![](https://www.biorxiv.org/content/biorxiv/early/2019/05/13/624239/F2.large.jpg)
+A scheme of the simulated sparse auto-encoder.
+
+::: {.columns}
+
+::::: {.column width=0.6}
+![](https://www.biorxiv.org/content/biorxiv/early/2019/05/13/624239/F2.large.jpg){height=60%}
+:::::
+
+:::: {.column width=0.4}
+- __b__ Geometry of compressed representation.
+- __c__ 
+::::
+
+:::
+
+# Compressing sensory inputs experienced during navigation (simulation)
+
+![ \scriptsize Schematic of a rodent exploring an open field arena. 
+ (b): Schematic of the architecture of the network with potential mapping of the layers onto
+ entorhinal cortex and hippocampus. 
+ (c): The memory capacity (the number of stored inputs that can be 
+ recalled from noisy cues of overlap < 0.7, such that
+ the pattern overlap of the retrieved representation with the original stored
+ pattern is larger than 0.8) as a function of the number of training sessions
+ (exposures to the environment). 
+](https://www.biorxiv.org/content/biorxiv/early/2019/05/13/624239/F3.large.jpg){width=80%}
+
+# Single neuron properties: the emergence of place cells
+
+![ \scriptsize __(a,b)__ Trajectories of a simulated animal in an open arena (exploration
+statistics A; top), and the spatial tuning profiles emerging from training the
+auto-encoder network on an artificial sensory input corresponding to these
+trajectories (bottom) for 36 neurons randomly selected from the second (dentate
+gyrus-like) layer of the model.  __(c,d)__ Same as on the left, but for a set of
+trajectories with a slightly different exploration bias (exploration statistics
+B).
+](https://www.biorxiv.org/content/biorxiv/early/2019/05/13/624239/F4.large.jpg){height=55%}
+
+
+# The instability of place fields reflects their history dependence
+
+![\footnotesize Maps of differences of average place fields between A and B sessions, 
+](https://www.biorxiv.org/content/biorxiv/early/2019/05/13/624239/F5.large.jpg){width=90%}
+
+# History effects and the ability to decode the recent past
+
+![\footnotesize (c) the fluctuations of the previous two panels are not just
+noise, but reliably capture history-dependent information,... one can decode 
+from the neural (DG) representations of the simulated animal exploring an 
+environment not just the statistics of the current session (i.e., A versus B;
+green), but also the statistics of the previous session it experienced (purple).
+](https://www.biorxiv.org/content/biorxiv/early/2019/05/13/624239/F6.large.jpg){width=90%}
+
+# Discussion

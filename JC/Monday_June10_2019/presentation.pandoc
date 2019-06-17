@@ -61,7 +61,22 @@ A: __Remove redundancy__ Extract uncorrelated components and store them.
 
 Old idea, ultra-metric Tree.
 
-![](https://www.biorxiv.org/content/biorxiv/early/2019/05/13/624239/F1.large.jpg){ width=80% }
+::: {.columns}
+
+:::: {.column width=0.6}
+![](https://www.biorxiv.org/content/biorxiv/early/2019/05/13/624239/F1.large.jpg){width=90%}
+::::
+
+:::: {.column width=0.4}
+Store ancesstor in one network; and descendants in another.
+::::
+:::
+
+# Model 
+
+![Mechanism for generating compressed representions?
+Authors use sparse auto-encoder [Chen 20198, NIPS].
+](./IMG_20190617_112921.jpg){width=80%}
 
 # Storing correlated patterns efficiently
 
@@ -120,4 +135,29 @@ green), but also the statistics of the previous session it experienced (purple).
 
 # Summary
 
-- 
+- Hippocampus  generates compressed representations of correlated memories
+  $\rightarrow$ Place cells is an emergent property in these networks.
+- Any structured sensory experience involving correlated inputs (parameterised
+  by external input $v$) will generate $v$-cells (e.g. frequency space [Arrow et
+  al., 2017])
+
+# Predictions
+
+- Neuronal representations should be affected by recent history. Fluctuations in
+  the firing are decodable to obtain recent exploration statistics.
+ 
+- \tiny $\ldots$ if the hippocampus was designed to encode only the
+  position of the animal as accurately as possible, it would appear unlikely
+  that in a stationary environment the representations would keep changing
+  substantially once the environment is sufficiently familiar and the position
+  of the animal can be decoded from the neural activity. \normalsize Even in situations in
+  which position is strongly encoded, we should observe continual modifications
+  that reflect the recent history of sensory experiences.
+
+# Future work
+
+- Compatible with observations in EC (correction for noisy path integration)?
+- Temporal correlations (replace input layer with recurrent network). Longer
+  timescales; scale-invariant sequences.
+- Encoding temporal sequences; Hippocampus role in prediction; 
+
